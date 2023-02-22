@@ -21,7 +21,7 @@ Requires installed `crystal`, `chromedriver`, `qdbus`.
 Set crontab job for user with `crontab -e` at every 5th minute:
 
 ```
-*/5 * * * *	env DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ~/bin/air_alert_map_ua_wallpaper
+*/5 * * * * env DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ~/bin/air_alert_map_ua_wallpaper
 ```
 
 ## Contributing
