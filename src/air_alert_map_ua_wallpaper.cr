@@ -8,18 +8,6 @@ require "selenium"
 # Currentry support only KDE Plasma.
 # Requires installed chromedriver, qdbus.
 
-# Build:
-#
-# shards build --release
-# cp bin/air_alert_map_ua_wallpaper ~/bin
-
-# Set crontab job for user:
-# crontab -e
-#
-# ```
-# */5 * * * *	env DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ~/bin/air_alert_map_ua_wallpaper
-# ```
-
 # Desktop resolution
 width = 2560
 height = 1440
