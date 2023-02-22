@@ -10,15 +10,23 @@ Currentry support only KDE Plasma.
 
 Requires installed `crystal`, `chromedriver`, `qdbus`.
 
-## Usage
+## Install
 
-- Clone this repository `git@github.com:mamantoha/air_alert_map_ua_wallpaper.git`
+- Clone this repository `git@github.com:mamantoha/air_alert_map_ua_wallpaper.git && cd air_alert_map_ua_wallpaper`
 - Build with `shards build --release`
-- Move `./bin/air_alert_map_ua_wallpaper` to any directory in `$PATH`
+- Run with `./bin/air_alert_map_ua_wallpaper` or move it to any directory in `$PATH`
+
+## Usage
 
 ### crontab
 
-Set crontab job for user with `crontab -e` at every 5th minute:
+To change background every 5 minutes the following command:
+
+```
+crontab -e
+```
+
+and add the following to the opened file:
 
 ```
 */5 * * * * env DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ~/bin/air_alert_map_ua_wallpaper
