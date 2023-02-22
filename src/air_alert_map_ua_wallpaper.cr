@@ -4,7 +4,7 @@ require "selenium"
 #   VERSION = "0.1.0"
 # end
 
-# This scripts takes a screenshot of https://alerts.in.ua and set it as Kwallpaper.
+# This scripts takes a screenshot of https://alerts.in.ua and set it as a desktop backgroud.
 # Currentry support only KDE Plasma.
 # Requires installed chromedriver, qdbus.
 

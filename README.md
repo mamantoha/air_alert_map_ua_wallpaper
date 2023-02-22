@@ -1,18 +1,28 @@
 # air_alert_map_ua_wallpaper
 
-TODO: Write a description here
+A CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
-## Installation
+## About
 
-TODO: Write installation instructions here
+This script takes a screenshot of the <https://alerts.in.ua> site and set it as a desktop background.
+
+Currentry support only KDE Plasma.
+
+Requires installed `crystal`, `chromedriver`, `qdbus`.
 
 ## Usage
 
-TODO: Write usage instructions here
+- Clone this repository `git@github.com:mamantoha/air_alert_map_ua_wallpaper.git`
+- Build with `shards build --release`
+- Move `./bin/air_alert_map_ua_wallpaper` to any directory in `$PATH`
 
-## Development
+### crontab
 
-TODO: Write development instructions here
+Set crontab job for user with `crontab -e` at every 5th minute:
+
+```
+*/5 * * * *	env DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus ~/bin/air_alert_map_ua_wallpaper
+```
 
 ## Contributing
 
