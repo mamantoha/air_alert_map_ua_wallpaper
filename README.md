@@ -6,7 +6,7 @@ A CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
 This script takes a screenshot of the <https://alerts.in.ua> site and set it as a desktop background.
 
-Currentry support only KDE Plasma.
+Currently support only KDE Plasma.
 
 Requires installed `crystal`, `chromedriver`, `qdbus`.
 

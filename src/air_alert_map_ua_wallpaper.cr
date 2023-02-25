@@ -5,7 +5,7 @@ require "selenium"
 # end
 
 # This scripts takes a screenshot of https://alerts.in.ua and set it as a desktop backgroud.
-# Currentry support only KDE Plasma.
+# Currently support only KDE Plasma.
 # Requires installed chromedriver, qdbus.
 
 # Desktop resolution
