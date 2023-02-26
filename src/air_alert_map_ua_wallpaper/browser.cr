@@ -58,7 +58,7 @@ module AirAlertMapUaWallpaper
         // Adjust `.credits` section
         document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%');
         document.querySelector('.credits h2').style.display = 'none';
-        document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')
+        document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large');
         JS
     end
   end
