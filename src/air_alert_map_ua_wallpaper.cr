@@ -2,6 +2,11 @@ require "selenium"
 
 module AirAlertMapUaWallpaper
   class Browser
+    enum Lang
+      Uk
+      En
+    end
+
     @session : Selenium::Session
 
     def initialize(driver_path = "/usr/bin/chromedriver", width = 2560, height = 1440)
@@ -14,9 +19,14 @@ module AirAlertMapUaWallpaper
       @session.window_manager.resize_window(width, height)
     end
 
-    def take_screenshot : File
-      # map_url = "https://alerts.in.ua/en"
-      map_url = "https://alerts.in.ua"
+    def take_screenshot(lang : Lang = Lang::Uk) : File
+      map_url =
+        case lang
+        in Lang::Uk
+          "https://alerts.in.ua"
+        in Lang::En
+          "https://alerts.in.ua/en"
+        end
 
       @session.navigate_to(map_url)
 
