@@ -52,11 +52,9 @@ module AirAlertMapUaWallpaper
 
       element.screenshot(tempfile.path)
 
-      tempfile
-    end
-
-    def finalize
       @session.delete
+
+      tempfile
     end
   end
 end
