@@ -17,7 +17,7 @@ module AirAlertMapUaWallpaper
     private def set_wallpaper_script
       <<-JS
         var allDesktops = desktops();
-        for (i=0; i < allDesktops.length; i++) {
+        for (i = 0; i < allDesktops.length; i++) {
           d = allDesktops[i];
           d.wallpaperPlugin = "org.kde.image";
           d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
