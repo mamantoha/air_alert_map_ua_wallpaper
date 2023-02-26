@@ -26,15 +26,15 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
-        parser.on("-w px", "--width=px", "specify a desired width in pixels (default: #{config.width})") do |width|
+        parser.on("-w", "--width=PIXELS", "specify a desired width in pixels (default: #{config.width})") do |width|
           config.width = width.to_i
         end
 
-        parser.on("-h px", "--height=px", "specify a desired height in pixels (default: #{config.height})") do |height|
+        parser.on("-h", "--height=PIXELS", "specify a desired height in pixels (default: #{config.height})") do |height|
           config.height = height.to_i
         end
 
-        parser.on("-l name", "--language=name", "language 'ua' or 'en' (default: #{config.language})") do |name|
+        parser.on("-l", "--language=NAME", "language ua|en (default: #{config.language})") do |name|
           config.language = name
         end
 
@@ -42,12 +42,12 @@ module AirAlertMapUaWallpaper
           config.light = true
         end
 
-        parser.on("--help", "Show this help") do
+        parser.on("--help", "print this help") do
           puts parser
           exit
         end
 
-        parser.on("-v", "--version", "Print program version") do
+        parser.on("-v", "--version", "display the version and exit") do
           default_target = Crystal::DESCRIPTION.split.last
           release_date = {{ `date -R`.stringify.chomp }}
 
