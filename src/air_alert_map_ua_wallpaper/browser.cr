@@ -51,6 +51,20 @@ module AirAlertMapUaWallpaper
       tempfile
     end
 
+    def take_screenshot(language : String) : File
+      language =
+        case language
+        when "ua"
+          Lang::Uk
+        when "en"
+          Lang::En
+        else
+          Lang::Uk
+        end
+
+      take_screenshot(language)
+    end
+
     def java_script
       <<-JS
         // Switch to dark theme

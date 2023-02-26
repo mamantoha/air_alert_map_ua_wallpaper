@@ -26,12 +26,16 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
-        parser.on("-w PIXELS", "--width=PIXELS", "specify a desired width (default: #{config.width})") do |width|
+        parser.on("-w px", "--width=px", "specify a desired width in pixels (default: #{config.width})") do |width|
           config.width = width.to_i
         end
 
-        parser.on("-h PIXELS", "--height=PIXELS", "specify a desired height (default: #{config.height})") do |height|
+        parser.on("-h px", "--height=px", "specify a desired height in pixels (default: #{config.height})") do |height|
           config.height = height.to_i
+        end
+
+        parser.on("-l name", "--language=name", "language 'ua' or 'en' (default: #{config.language})") do |name|
+          config.language = name
         end
 
         parser.on("--help", "Show this help") do
