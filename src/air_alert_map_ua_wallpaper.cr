@@ -17,7 +17,7 @@ module AirAlertMapUaWallpaper
     CLI.new
 
     browser = AirAlertMapUaWallpaper::Browser.new(width: config.width, height: config.height)
-    tempfile = browser.take_screenshot(config.language)
+    tempfile = browser.take_screenshot(language: config.language, light: config.light)
 
     wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(tempfile)
     wallpaper.set!

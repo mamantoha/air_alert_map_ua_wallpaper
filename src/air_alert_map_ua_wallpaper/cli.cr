@@ -38,6 +38,10 @@ module AirAlertMapUaWallpaper
           config.language = name
         end
 
+        parser.on("--light", "set light wallpaper") do
+          config.light = true
+        end
+
         parser.on("--help", "Show this help") do
           puts parser
           exit

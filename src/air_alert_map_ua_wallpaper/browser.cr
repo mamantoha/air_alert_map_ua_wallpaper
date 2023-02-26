@@ -17,9 +17,9 @@ module AirAlertMapUaWallpaper
       @session.window_manager.resize_window(width, height)
     end
 
-    def take_screenshot(lang : Lang = Lang::Uk) : File
+    def take_screenshot(language : Lang = Lang::Uk, light : Bool = false) : File
       map_url =
-        case lang
+        case language
         in Lang::Uk
           "https://alerts.in.ua"
         in Lang::En
@@ -40,7 +40,15 @@ module AirAlertMapUaWallpaper
 
       document_manager = @session.document_manager
 
-      document_manager.execute_script(java_script)
+      unless light
+        # Switch to dark theme
+        document_manager.execute_script("document.getElementsByTagName('html')[0].classList.toggle('light')")
+      end
+
+      # Adjust `.credits` section
+      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
+      document_manager.execute_script("document.querySelector('.credits h2').style.display = 'none'")
+      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')")
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
 
@@ -51,7 +59,7 @@ module AirAlertMapUaWallpaper
       tempfile
     end
 
-    def take_screenshot(language : String) : File
+    def take_screenshot(language : String, light : Bool = false) : File
       language =
         case language
         when "ua"
@@ -62,18 +70,7 @@ module AirAlertMapUaWallpaper
           Lang::Uk
         end
 
-      take_screenshot(language)
-    end
-
-    private def java_script
-      <<-JS
-        // Switch to dark theme
-        document.getElementsByTagName('html')[0].classList.toggle('light');
-        // Adjust `.credits` section
-        document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%');
-        document.querySelector('.credits h2').style.display = 'none';
-        document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large');
-        JS
+      take_screenshot(language, light)
     end
   end
 end
