@@ -10,6 +10,26 @@ Currently support only KDE Plasma.
 
 Requires installed `crystal`, `chromedriver`, `qdbus`.
 
+```
+$ air_alert_map_ua_wallpaper --help
+NAME
+    air_alert_map_ua_wallpaper - a CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
+
+VERSION
+    0.1.0
+
+SYNOPSIS
+    air_alert_map_ua_wallpaper [arguments]
+
+ARGUMENTS
+    -w, --width=PIXELS               specify a desired width in pixels (default: 2560)
+    -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
+    -l, --language=NAME              language ua|en (default: ua)
+    --light                          set light wallpaper
+    --help                           print this help
+    -v, --version                    display the version and exit
+```
+
 ## Install
 
 - Clone this repository `git@github.com:mamantoha/air_alert_map_ua_wallpaper.git && cd air_alert_map_ua_wallpaper`
