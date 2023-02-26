@@ -4,7 +4,7 @@ require "./air_alert_map_ua_wallpaper/browser"
 require "./air_alert_map_ua_wallpaper/wallpaper"
 
 module AirAlertMapUaWallpaper
-  VERSION = "0.1.0"
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
   NAME    = "air_alert_map_ua_wallpaper"
 
   extend self
