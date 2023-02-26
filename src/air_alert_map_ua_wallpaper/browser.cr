@@ -65,7 +65,7 @@ module AirAlertMapUaWallpaper
       take_screenshot(language)
     end
 
-    def java_script
+    private def java_script
       <<-JS
         // Switch to dark theme
         document.getElementsByTagName('html')[0].classList.toggle('light');
