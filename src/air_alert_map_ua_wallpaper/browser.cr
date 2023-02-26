@@ -40,13 +40,7 @@ module AirAlertMapUaWallpaper
 
       document_manager = @session.document_manager
 
-      # Switch to dark theme
-      document_manager.execute_script("document.getElementsByTagName('html')[0].classList.toggle('light')")
-
-      # Adjust `.credits` section
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.querySelector('.credits h2').style.display = 'none'")
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')")
+      document_manager.execute_script(java_script)
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
 
@@ -55,6 +49,17 @@ module AirAlertMapUaWallpaper
       @session.delete
 
       tempfile
+    end
+
+    def java_script
+      <<-JS
+        // Switch to dark theme
+        document.getElementsByTagName('html')[0].classList.toggle('light');
+        // Adjust `.credits` section
+        document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%');
+        document.querySelector('.credits h2').style.display = 'none';
+        document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')
+        JS
     end
   end
 end
