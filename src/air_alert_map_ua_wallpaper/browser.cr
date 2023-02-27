@@ -21,9 +21,9 @@ module AirAlertMapUaWallpaper
       map_url =
         case language
         in Lang::Uk
-          "https://alerts.in.ua?minimal&disableInteractiveMap&showWarnings"
+          "https://alerts.in.ua?minimal&disableInteractiveMap&full&showWarnings"
         in Lang::En
-          "https://alerts.in.ua/en?minimal&disableInteractiveMap&showWarnings"
+          "https://alerts.in.ua/en?minimal&disableInteractiveMap&full&showWarnings"
         end
 
       @session.navigate_to(map_url)
