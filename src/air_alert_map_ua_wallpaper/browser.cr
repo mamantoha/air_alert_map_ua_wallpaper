@@ -28,13 +28,8 @@ module AirAlertMapUaWallpaper
 
       @session.navigate_to(map_url)
 
-      # TODO check if site is loaded
-      #
-      # https://github.com/matthewmcgarvey/selenium.cr/pull/25
-      #
-      # wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
-      # wait.until { @session.find_element(:css, "#map svg") }
-      sleep 5.seconds
+      wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
+      wait.until { @session.find_element(:css, "#map svg") }
 
       element = @session.find_element(:css, "#map")
 

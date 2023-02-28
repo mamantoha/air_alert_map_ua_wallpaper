@@ -2,5 +2,5 @@ version: 2.0
 shards:
   selenium:
     git: https://github.com/matthewmcgarvey/selenium.cr.git
-    version: 0.10.0
+    version: 0.10.0+git.commit.93768b3e3e21bd3ba1f0a11d75c49c1110bbb171
 
