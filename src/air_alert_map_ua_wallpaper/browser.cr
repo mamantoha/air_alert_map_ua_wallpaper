@@ -42,7 +42,6 @@ module AirAlertMapUaWallpaper
 
       # Adjust `.credits` section
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.querySelector('.credits h2').style.display = 'none'")
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')")
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
