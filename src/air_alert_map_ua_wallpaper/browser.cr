@@ -48,9 +48,9 @@ module AirAlertMapUaWallpaper
 
       element.screenshot(tempfile.path)
 
-      @session.delete
-
       tempfile
+    ensure
+      @session.delete
     end
 
     def take_screenshot(language : String, light : Bool = false) : File
