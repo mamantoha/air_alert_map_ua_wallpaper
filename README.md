@@ -2,6 +2,8 @@
 
 A CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
+![preview](preview.png)
+
 ## About
 
 This script takes a screenshot of the <https://alerts.in.ua> site and set it as a desktop background.
