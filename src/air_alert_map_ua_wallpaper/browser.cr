@@ -42,7 +42,7 @@ module AirAlertMapUaWallpaper
 
       # Adjust `.credits` section
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'xx-large')")
+      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'x-large')")
 
       element.screenshot(path)
 
