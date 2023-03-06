@@ -1,6 +1,14 @@
 version: 2.0
 shards:
+  db:
+    git: https://github.com/crystal-lang/crystal-db.git
+    version: 0.11.0
+
   selenium:
     git: https://github.com/matthewmcgarvey/selenium.cr.git
-    version: 0.10.0+git.commit.93768b3e3e21bd3ba1f0a11d75c49c1110bbb171
+    version: 0.10.0+git.commit.048dbf2004a000eaca4fe7735502c973413ecb7b
+
+  sqlite3:
+    git: https://github.com/crystal-lang/crystal-sqlite3.git
+    version: 0.19.0
 

@@ -8,6 +8,8 @@ dependencies:
   selenium:
     github: matthewmcgarvey/selenium.cr
     branch: master
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
 
 targets:
   air_alert_map_ua_wallpaper:
