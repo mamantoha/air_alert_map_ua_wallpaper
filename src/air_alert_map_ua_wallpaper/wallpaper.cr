@@ -26,7 +26,7 @@ module AirAlertMapUaWallpaper
     # Set the wallpaper on macOS
     # Taken from https://github.com/dylanaraps/pywal/blob/master/pywal/wallpaper.py#L133
     private def set_mac_wallpaper
-      img = Path[@file.path].expand.to_s
+      img = @file.path.to_s
       db_file = Path.home.join("Library/Application Support/Dock/desktoppicture.db")
 
       DB.open "sqlite3://#{db_file}" do |db|
@@ -67,7 +67,7 @@ module AirAlertMapUaWallpaper
           d = allDesktops[i];
           d.wallpaperPlugin = "org.kde.image";
           d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
-          d.writeConfig("Image", "file://#{Path[@file.path].expand}")
+          d.writeConfig("Image", "file://#{@file.path}")
         }
         JS
     end
