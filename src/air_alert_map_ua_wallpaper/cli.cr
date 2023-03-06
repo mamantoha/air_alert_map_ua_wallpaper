@@ -26,7 +26,7 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
-        parser.on("-t", "--t=NAME", "kde | macos (default: #{config.target})") do |target|
+        parser.on("-t", "--t=NAME", "target platform: kde|macos (default: #{config.target})") do |target|
           config.target = target
         end
 
