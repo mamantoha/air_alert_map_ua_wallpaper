@@ -17,7 +17,7 @@ module AirAlertMapUaWallpaper
       @session.window_manager.resize_window(width, height)
     end
 
-    def take_screenshot(path : String, language : Lang = Lang::Uk, light : Bool = false) : File
+    def take_screenshot(language : Lang = Lang::Uk, light : Bool = false) : File
       map_url =
         case language
         in Lang::Uk
@@ -44,14 +44,16 @@ module AirAlertMapUaWallpaper
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'x-large')")
 
-      element.screenshot(path)
+      tempfile = File.tempfile("alers_wallpaper", ".png")
 
-      File.open(path)
+      element.screenshot(tempfile.path)
+
+      tempfile
     ensure
       @session.delete
     end
 
-    def take_screenshot(path : String, language : String, light : Bool = false) : File
+    def take_screenshot(language : String, light : Bool = false) : File
       language =
         case language
         when "ua"
@@ -62,7 +64,7 @@ module AirAlertMapUaWallpaper
           Lang::Uk
         end
 
-      take_screenshot(path, language, light)
+      take_screenshot(language, light)
     end
   end
 end
