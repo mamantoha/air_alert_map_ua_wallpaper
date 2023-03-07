@@ -23,6 +23,21 @@ module AirAlertMapUaWallpaper
       sleep 2 # workaround for multi-monitor
     end
 
+    # # Doesn't work with multiple spaces
+    # private def set_mac_wallpaper
+    #   script = <<-OSA
+    #     tell application "System Events"
+    #       tell every desktop
+    #         set picture to POSIX file "#{@file.path.to_s}"
+    #       end tell
+    #     end tell
+    #     OSA
+    #
+    #   command = "osascript -e '#{script}'"
+    #
+    #   Process.run(command, shell: true)
+    # end
+
     # Set the wallpaper on macOS
     # Taken from https://github.com/dylanaraps/pywal/blob/master/pywal/wallpaper.py#L133
     private def set_mac_wallpaper
