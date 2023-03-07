@@ -18,7 +18,7 @@ module AirAlertMapUaWallpaper
     CLI.new
 
     browser = AirAlertMapUaWallpaper::Browser.new(chromedriver_path, width: config.width, height: config.height)
-    file = browser.take_screenshot(language: config.language, light: config.light)
+    file = browser.take_screenshot(language: config.language, light: config.light?)
 
     wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
     wallpaper.set!
