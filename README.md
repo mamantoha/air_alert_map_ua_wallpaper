@@ -8,9 +8,16 @@ A CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
 This script takes a screenshot of the <https://alerts.in.ua> site and set it as a desktop background.
 
-Support KDE Plasma and macOS.
+Support:
 
-Requires installed `crystal`, `chromedriver`, `qdbus`.
+- [x] KDE Plasma (Linux)
+- [x] macOS
+
+Required libraries:
+
+- To build this script, a requirement is to have a working version of Crystal already installed.
+- A requirement is to have a working `chromedriver`.
+- You will also need `qdbus` on KDE Plasma.
 
 ```
 $ air_alert_map_ua_wallpaper --help
@@ -33,12 +40,6 @@ ARGUMENTS
     -v, --version                    display the version and exit
 ```
 
-Set the wallpaper on macOS:
-
-```
-air_alert_map_ua_wallpaper -t macos -w 1728 -h 1117
-```
-
 ## Install
 
 - Clone this repository `git@github.com:mamantoha/air_alert_map_ua_wallpaper.git && cd air_alert_map_ua_wallpaper`
@@ -46,6 +47,12 @@ air_alert_map_ua_wallpaper -t macos -w 1728 -h 1117
 - Run with `./bin/air_alert_map_ua_wallpaper` or move it to any directory in `$PATH`
 
 ## Usage
+
+Set the wallpaper on macOS:
+
+```
+air_alert_map_ua_wallpaper -t macos -w 1728 -h 1117
+```
 
 ### crontab
 
