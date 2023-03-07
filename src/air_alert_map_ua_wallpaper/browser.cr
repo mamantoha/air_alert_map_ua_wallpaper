@@ -40,9 +40,12 @@ module AirAlertMapUaWallpaper
         document_manager.execute_script("document.getElementsByTagName('html')[0].classList.toggle('light')")
       end
 
+      # Hide "alerts.in.ua" text from the map
+      document_manager.execute_script("document.querySelector('#map text.map-attr').style.display = 'none'")
+
       # Adjust `.credits` section
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', 'x-large')")
+      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', '1.5vw')")
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
 

@@ -51,7 +51,7 @@ ARGUMENTS
 Set the wallpaper on macOS:
 
 ```
-air_alert_map_ua_wallpaper -t macos -w 1728 -h 1117
+air_alert_map_ua_wallpaper -t macos -w 3456 -h 2234
 ```
 
 ### crontab
