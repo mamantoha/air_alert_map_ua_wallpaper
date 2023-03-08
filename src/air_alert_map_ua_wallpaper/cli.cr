@@ -26,6 +26,10 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
+        parser.on("-t", "--t=NAME", "target platform: kde|macos (default: #{config.target})") do |target|
+          config.target = target
+        end
+
         parser.on("-w", "--width=PIXELS", "specify a desired width in pixels (default: #{config.width})") do |width|
           config.width = width.to_i
         end

@@ -1,4 +1,5 @@
 require "selenium"
+require "sqlite3"
 require "./air_alert_map_ua_wallpaper/cli"
 require "./air_alert_map_ua_wallpaper/browser"
 require "./air_alert_map_ua_wallpaper/wallpaper"
@@ -16,13 +17,15 @@ module AirAlertMapUaWallpaper
   def run
     CLI.new
 
-    browser = AirAlertMapUaWallpaper::Browser.new(width: config.width, height: config.height)
-    tempfile = browser.take_screenshot(language: config.language, light: config.light)
+    browser = AirAlertMapUaWallpaper::Browser.new(chromedriver_path, width: config.width, height: config.height)
+    file = browser.take_screenshot(language: config.language, light: config.light?)
 
-    wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(tempfile)
+    wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
     wallpaper.set!
+  end
 
-    tempfile.delete
+  def chromedriver_path : String
+    {{ `whereis chromedriver`.split(":")[1].strip }}
   end
 end
 
