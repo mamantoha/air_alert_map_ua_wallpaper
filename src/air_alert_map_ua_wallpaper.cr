@@ -23,7 +23,7 @@ module AirAlertMapUaWallpaper
       elsif path = geckodriver_path
         AirAlertMapUaWallpaper::Browser.new(Browser::Type::Firefox, path, width: config.width, height: config.height)
       else
-        puts "Please install chromedriver"
+        puts "Please install chromedriver or geckodriver"
         exit
       end
 
