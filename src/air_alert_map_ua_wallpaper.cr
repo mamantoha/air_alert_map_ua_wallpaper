@@ -17,20 +17,28 @@ module AirAlertMapUaWallpaper
   def run
     CLI.new
 
-    if _chromedriver_path = chromedriver_path
-      browser = AirAlertMapUaWallpaper::Browser.new(_chromedriver_path, width: config.width, height: config.height)
-      file = browser.take_screenshot(language: config.language, light: config.light?)
+    browser =
+      if path = chromedriver_path
+        AirAlertMapUaWallpaper::Browser.new(Browser::Type::Chrome, path, width: config.width, height: config.height)
+      elsif path = geckodriver_path
+        AirAlertMapUaWallpaper::Browser.new(Browser::Type::Firefox, path, width: config.width, height: config.height)
+      else
+        puts "Please install chromedriver"
+        exit
+      end
 
-      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
-      wallpaper.set!
-    else
-      puts "Please install chromedriver"
-      exit
-    end
+    file = browser.take_screenshot(language: config.language, light: config.light?)
+
+    wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
+    wallpaper.set!
   end
 
   def chromedriver_path : String?
     `whereis chromedriver`.split(":")[1].strip.presence
+  end
+
+  def geckodriver_path : String?
+    `whereis geckodriver`.split(":")[1].strip.presence
   end
 end
 
