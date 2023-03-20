@@ -17,15 +17,20 @@ module AirAlertMapUaWallpaper
   def run
     CLI.new
 
-    browser = AirAlertMapUaWallpaper::Browser.new(chromedriver_path, width: config.width, height: config.height)
-    file = browser.take_screenshot(language: config.language, light: config.light?)
+    if _chromedriver_path = chromedriver_path
+      browser = AirAlertMapUaWallpaper::Browser.new(_chromedriver_path, width: config.width, height: config.height)
+      file = browser.take_screenshot(language: config.language, light: config.light?)
 
-    wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
-    wallpaper.set!
+      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
+      wallpaper.set!
+    else
+      puts "Please install chromedriver"
+      exit
+    end
   end
 
-  def chromedriver_path : String
-    {{ `whereis chromedriver`.split(":")[1].strip }}
+  def chromedriver_path : String?
+    `whereis chromedriver`.split(":")[1].strip.presence
   end
 end
 
