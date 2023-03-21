@@ -78,7 +78,13 @@ module AirAlertMapUaWallpaper
 
       unless light
         # Switch to dark theme
-        document_manager.execute_script("document.documentElement.classList.toggle('light')")
+        document_manager.execute_script(
+          <<-JS
+          if (document.documentElement.classList.contains('light')) {
+            document.documentElement.classList.remove('light');
+          }
+          JS
+        )
       end
 
       # Hide "alerts.in.ua" text from the map
