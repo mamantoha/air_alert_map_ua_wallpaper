@@ -28,7 +28,7 @@ module AirAlertMapUaWallpaper
       service = Selenium::Service.chrome(driver_path: driver_path)
       driver = Selenium::Driver.for(:chrome, service: service)
       capabilities = Selenium::Chrome::Capabilities.new
-      capabilities.chrome_options.args = ["no-sandbox", "headless"]
+      capabilities.chrome_options.args = ["no-sandbox", "headless", "disable-gpu"]
 
       driver.create_session(capabilities)
     end
