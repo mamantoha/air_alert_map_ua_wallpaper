@@ -60,16 +60,16 @@ module AirAlertMapUaWallpaper
       @session.navigate_to(map_url)
       document_manager = @session.document_manager
 
-      # # wait for console.log("loaded map") to be called
-      # document_manager.execute_async_script(
-      #   <<-JS
-      #   var callback = arguments[0];
-      #   console.log = function(message) {
-      #     if(message === "loaded map")
-      #       callback();
-      #   };
-      #   JS
-      # )
+      # wait for console.log("loaded map") to be called
+      document_manager.execute_async_script(
+        <<-JS
+        var callback = arguments[0];
+        console.log = function(message) {
+          if(message === "loaded map")
+            callback();
+        };
+        JS
+      )
 
       wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
       wait.until { @session.find_element(:css, "#map svg") }
@@ -94,7 +94,7 @@ module AirAlertMapUaWallpaper
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', '1.5vw')")
 
-      sleep 500.milliseconds
+      sleep 1.second
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
 
