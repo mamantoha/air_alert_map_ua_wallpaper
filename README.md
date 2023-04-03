@@ -16,7 +16,7 @@ Support:
 Required libraries:
 
 - To build this script, a requirement is to have a working version of Crystal already installed.
-- A requirement is to have a working `chromedriver`.
+- A requirement is to have a working `chromedriver` or `geckodriver`.
 - You will also need `qdbus` on KDE Plasma.
 
 ```
@@ -31,7 +31,8 @@ SYNOPSIS
     air_alert_map_ua_wallpaper [arguments]
 
 ARGUMENTS
-    -t, --t=NAME                     target platform: kde|macos (default: kde)
+    -t, --target=NAME                target platform: kde|macos (default: kde)
+    -b, --browser=NAME               browser: chrome|firefox (default: chrome)
     -w, --width=PIXELS               specify a desired width in pixels (default: 2560)
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
     -l, --language=NAME              language ua|en (default: ua)
