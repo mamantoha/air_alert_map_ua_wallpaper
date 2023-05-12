@@ -36,6 +36,7 @@ ARGUMENTS
     -w, --width=PIXELS               specify a desired width in pixels (default: 2560)
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
     -l, --language=NAME              language ua|en (default: ua)
+    -p, --preset=NAME                preset default-preset|contrast-preset|vadym-preset|black-preset (default: default-preset)
     --light                          set light wallpaper
     --help                           print this help
     -v, --version                    display the version and exit

@@ -48,7 +48,7 @@ module AirAlertMapUaWallpaper
       driver.create_session(capabilities)
     end
 
-    def take_screenshot(language : Lang = Lang::Uk, light : Bool = false) : File
+    def take_screenshot(language : Lang = Lang::Uk, light : Bool = false, preset : String = "default-preset") : File
       map_url =
         case language
         in Lang::Uk
@@ -87,6 +87,8 @@ module AirAlertMapUaWallpaper
         )
       end
 
+      document_manager.execute_script("document.documentElement.classList.add('#{preset}')")
+
       # Hide "alerts.in.ua" text from the map
       document_manager.execute_script("document.querySelector('#map text.map-attr').style.display = 'none'")
 
@@ -105,7 +107,7 @@ module AirAlertMapUaWallpaper
       @session.delete
     end
 
-    def take_screenshot(language : String, light : Bool = false) : File
+    def take_screenshot(language : String, light : Bool = false, preset : String = "default-preset") : File
       language =
         case language
         when "ua"
@@ -116,7 +118,7 @@ module AirAlertMapUaWallpaper
           Lang::Uk
         end
 
-      take_screenshot(language, light)
+      take_screenshot(language, light, preset)
     end
   end
 end

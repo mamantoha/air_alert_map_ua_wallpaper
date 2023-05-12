@@ -50,6 +50,10 @@ module AirAlertMapUaWallpaper
           config.light = true
         end
 
+        parser.on("-p", "--preset=NAME", "preset default-preset|contrast-preset|vadym-preset|black-preset (default: #{config.preset})") do |name|
+          config.preset = name
+        end
+
         parser.on("--help", "print this help") do
           puts parser
           exit

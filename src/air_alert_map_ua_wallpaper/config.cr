@@ -8,5 +8,6 @@ module AirAlertMapUaWallpaper
     property height = 1440
     property language = "ua"
     property? light = false
+    property preset = "default-preset"
   end
 end
