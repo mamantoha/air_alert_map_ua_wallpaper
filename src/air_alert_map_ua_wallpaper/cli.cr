@@ -54,6 +54,10 @@ module AirAlertMapUaWallpaper
           config.preset = name
         end
 
+        parser.on("-m", "--map=NAME", "map dynamic|super|vbasic|hex (default: #{config.map})") do |name|
+          config.map = name
+        end
+
         parser.on("--help", "print this help") do
           puts parser
           exit

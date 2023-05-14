@@ -9,5 +9,6 @@ module AirAlertMapUaWallpaper
     property language = "ua"
     property? light = false
     property preset = "default-preset"
+    property map : String? = nil
   end
 end

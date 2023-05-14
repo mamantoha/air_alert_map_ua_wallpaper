@@ -37,6 +37,7 @@ ARGUMENTS
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
     -l, --language=NAME              language ua|en (default: ua)
     -p, --preset=NAME                preset default-preset|contrast-preset|vadym-preset|black-preset (default: default-preset)
+    -m, --map=NAME                   map dynamic|super|vbasic|hex (default: )
     --light                          set light wallpaper
     --help                           print this help
     -v, --version                    display the version and exit
