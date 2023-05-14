@@ -30,7 +30,12 @@ module AirAlertMapUaWallpaper
       end
 
     if browser
-      file = browser.take_screenshot(language: config.language, light: config.light?, preset: config.preset)
+      file = browser.take_screenshot(
+        language: config.language,
+        light: config.light?,
+        preset: config.preset,
+        map: config.map
+      )
 
       wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
       wallpaper.set!

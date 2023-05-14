@@ -10,6 +10,14 @@ module AirAlertMapUaWallpaper
       Firefox
     end
 
+    # dynamic | dynamic | Швидка
+    # full    | false   | Класична
+    # fast    | super   | Спрощена
+    #         | vbasic  | Схематична
+    #         | hex     | Гексагональна мапа
+    # ascii   |         | ASCII мапа (don't use)
+    LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
+
     @session : Selenium::Session
 
     def initialize(type : Type, driver_path : String, width = 2560, height = 1440)
@@ -48,17 +56,31 @@ module AirAlertMapUaWallpaper
       driver.create_session(capabilities)
     end
 
-    def take_screenshot(language : Lang = Lang::Uk, light : Bool = false, preset : String = "default-preset") : File
+    def take_screenshot(
+      language : Lang = Lang::Uk,
+      light : Bool = false,
+      preset : String = "default-preset",
+      map : String? = nil
+    ) : File
+      lite_map = map.in?(LITE_MAPS) ? "\"#{map}\"" : false
+
       map_url =
         case language
         in Lang::Uk
-          "https://alerts.in.ua?minimal&disableInteractiveMap&full&showWarnings"
+          "https://alerts.in.ua?minimal&disableInteractiveMap&showWarnings"
         in Lang::En
-          "https://alerts.in.ua/en?minimal&disableInteractiveMap&full&showWarnings"
+          "https://alerts.in.ua/en?minimal&disableInteractiveMap&showWarnings"
         end
+
+      map_url = map_url + "&full" unless lite_map
 
       @session.navigate_to(map_url)
       document_manager = @session.document_manager
+
+      local_storage_manager = @session.local_storage_manager
+      local_storage_manager.item("liteMap", "#{lite_map}") if lite_map
+
+      @session.navigation_manager.refresh
 
       # wait for console.log("loaded map") to be called
       document_manager.execute_async_script(
@@ -107,7 +129,12 @@ module AirAlertMapUaWallpaper
       @session.delete
     end
 
-    def take_screenshot(language : String, light : Bool = false, preset : String = "default-preset") : File
+    def take_screenshot(
+      language : String,
+      light : Bool = false,
+      preset : String = "default-preset",
+      map : String? = nil
+    ) : File
       language =
         case language
         when "ua"
@@ -118,7 +145,7 @@ module AirAlertMapUaWallpaper
           Lang::Uk
         end
 
-      take_screenshot(language, light, preset)
+      take_screenshot(language, light, preset, map)
     end
   end
 end
