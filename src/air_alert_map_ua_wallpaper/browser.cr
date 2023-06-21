@@ -79,6 +79,9 @@ module AirAlertMapUaWallpaper
 
       local_storage_manager = @session.local_storage_manager
       local_storage_manager.item("liteMap", "#{lite_map}") if lite_map
+      local_storage_manager.item("showRivers", "true")
+      local_storage_manager.item("showNeighbourRegions", "true")
+      local_storage_manager.item("showRaionBorders", "true")
 
       @session.navigation_manager.refresh
 
