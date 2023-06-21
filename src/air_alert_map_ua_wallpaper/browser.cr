@@ -113,6 +113,7 @@ module AirAlertMapUaWallpaper
 
       # Hide "alerts.in.ua" text from the map
       document_manager.execute_script("document.querySelector('#map text.map-attr').style.display = 'none'")
+      document_manager.execute_script("document.querySelector('#map text.map-attr-time').style.display = 'none'")
 
       # Adjust `.credits` section
       document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
