@@ -18,10 +18,11 @@ module AirAlertMapUaWallpaper
     # ascii   |         | ASCII мапа (don't use)
     LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
 
+    @driver : Selenium::Driver
     @session : Selenium::Session
 
     def initialize(type : Type, driver_path : String, width = 2560, height = 1440)
-      @session =
+      @driver, @session =
         case type
         in .firefox?
           create_firefox_session(driver_path)
@@ -32,16 +33,17 @@ module AirAlertMapUaWallpaper
       @session.window_manager.resize_window(width, height)
     end
 
-    def create_chrome_session(driver_path : String) : Selenium::Session
+    def create_chrome_session(driver_path : String) : {Selenium::Driver, Selenium::Session}
       service = Selenium::Service.chrome(driver_path: driver_path)
       driver = Selenium::Driver.for(:chrome, service: service)
       capabilities = Selenium::Chrome::Capabilities.new
       capabilities.chrome_options.args = ["no-sandbox", "headless", "disable-gpu"]
 
-      driver.create_session(capabilities)
+      session = driver.create_session(capabilities)
+      {driver, session}
     end
 
-    def create_firefox_session(driver_path : String) : Selenium::Session
+    def create_firefox_session(driver_path : String) : {Selenium::Driver, Selenium::Session}
       # Unhandled exception: session not created: Failed to start browser /snap/firefox/current/firefox.launcher: no such file or directory (Selenium::Error)
       #
       # ```
@@ -53,7 +55,9 @@ module AirAlertMapUaWallpaper
       capabilities = Selenium::Firefox::Capabilities.new
       capabilities.firefox_options.args = ["-headless"]
 
-      driver.create_session(capabilities)
+      session = driver.create_session(capabilities)
+
+      {driver, session}
     end
 
     def take_screenshot(
@@ -131,6 +135,7 @@ module AirAlertMapUaWallpaper
       tempfile
     ensure
       @session.delete
+      @driver.stop
     end
 
     def take_screenshot(
