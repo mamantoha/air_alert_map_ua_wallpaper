@@ -6,7 +6,7 @@ authors:
 
 dependencies:
   selenium:
-    github: matthewmcgarvey/selenium.cr
+    github: crystal-loot/selenium.cr
     branch: master
   sqlite3:
     github: crystal-lang/crystal-sqlite3
