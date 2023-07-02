@@ -6,7 +6,7 @@ shards:
 
   selenium:
     git: https://github.com/crystal-loot/selenium.cr.git
-    version: 0.11.0+git.commit.ca2daa69b64202bd390da1b66bd64d8db74fba15
+    version: 0.12.0+git.commit.44f16610f1749aeac3b92465643f741156f4429b
 
   sqlite3:
     git: https://github.com/crystal-lang/crystal-sqlite3.git
