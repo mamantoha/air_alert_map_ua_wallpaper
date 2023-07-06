@@ -124,8 +124,9 @@ module AirAlertMapUaWallpaper
       document_manager.execute_script("document.querySelector('#map text.map-attr-time').style.display = 'none'")
 
       # Adjust `.credits` section
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.getElementsByClassName('credits')[0].style.setProperty('font-size', '1.5vw')")
+      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('top', 'initial')")
+      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('bottom', '7%')")
+      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('font-size', '1.5vw')")
 
       sleep 1.second
 
