@@ -30,7 +30,7 @@ module AirAlertMapUaWallpaper
           config.target = target
         end
 
-        parser.on("-b", "--browser=NAME", "browser: chrome|firefox (default: #{config.browser})") do |browser|
+        parser.on("-b", "--browser=NAME", "browser: #{AirAlertMapUaWallpaper::Browser::Type.names.map(&.downcase).join('|')} (default: #{config.browser})") do |browser|
           config.browser = browser
         end
 
