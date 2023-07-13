@@ -35,7 +35,7 @@ ARGUMENTS
     -b, --browser=NAME               browser: chrome|firefox (default: chrome)
     -w, --width=PIXELS               specify a desired width in pixels (default: 2560)
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
-    -l, --language=NAME              language ua|en (default: ua)
+    -l, --language=NAME              language ua|en|pl (default: ua)
     --light                          set light wallpaper
     -p, --preset=NAME                preset default-preset|contrast-preset|vadym-preset|black-preset (default: default-preset)
     -m, --map=NAME                   map dynamic|super|vbasic|hex (default: dynamic)

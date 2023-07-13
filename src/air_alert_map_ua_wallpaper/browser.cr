@@ -3,6 +3,7 @@ module AirAlertMapUaWallpaper
     enum Lang
       Uk
       En
+      Pl
     end
 
     enum Type
@@ -74,6 +75,8 @@ module AirAlertMapUaWallpaper
           "https://alerts.in.ua?minimal&disableInteractiveMap&showWarnings"
         in Lang::En
           "https://alerts.in.ua/en?minimal&disableInteractiveMap&showWarnings"
+        in Lang::Pl
+          "https://alerts.in.ua/pl?minimal&disableInteractiveMap&showWarnings"
         end
 
       map_url = map_url + "&full" unless lite_map
@@ -152,6 +155,8 @@ module AirAlertMapUaWallpaper
           Lang::Uk
         when "en"
           Lang::En
+        when "pl"
+          Lang::Pl
         else
           Lang::Uk
         end
