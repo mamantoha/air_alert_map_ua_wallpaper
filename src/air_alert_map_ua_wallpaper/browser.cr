@@ -89,6 +89,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showRivers", "true")
       local_storage_manager.item("showNeighbourRegions", "true")
       local_storage_manager.item("showRaionBorders", "true")
+      local_storage_manager.item("showHromadas", "true")
       local_storage_manager.item("showUnofficialArtillery", "true")
 
       @session.navigation_manager.refresh
