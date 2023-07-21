@@ -72,11 +72,11 @@ module AirAlertMapUaWallpaper
       map_url =
         case language
         in Lang::Uk
-          "https://alerts.in.ua?minimal&disableInteractiveMap&showWarnings"
+          "https://alerts.in.ua?minimal&disableInteractiveMap"
         in Lang::En
-          "https://alerts.in.ua/en?minimal&disableInteractiveMap&showWarnings"
+          "https://alerts.in.ua/en?minimal&disableInteractiveMap"
         in Lang::Pl
-          "https://alerts.in.ua/pl?minimal&disableInteractiveMap&showWarnings"
+          "https://alerts.in.ua/pl?minimal&disableInteractiveMap"
         end
 
       map_url = map_url + "&full" unless lite_map
@@ -86,12 +86,18 @@ module AirAlertMapUaWallpaper
 
       local_storage_manager = @session.local_storage_manager
       local_storage_manager.item("liteMap", "#{lite_map}") if lite_map
-      local_storage_manager.item("showRivers", "true")
-      local_storage_manager.item("showNeighbourRegions", "true")
       local_storage_manager.item("showRaionBorders", "true")
-      local_storage_manager.item("showHromadas", "true")
-      local_storage_manager.item("showUnofficialArtillery", "true")
+
+      local_storage_manager.item("showOfficialMapAlerts", "true")
+      local_storage_manager.item("showLocalAlerts", "true")
       local_storage_manager.item("showThreats", "true")
+      local_storage_manager.item("showWarnings", "true")
+      local_storage_manager.item("showUnofficialArtillery", "true")
+
+      local_storage_manager.item("showMapIcons", "true")
+      local_storage_manager.item("showHromadas", "true")
+      local_storage_manager.item("showNeighbourRegions", "true")
+      local_storage_manager.item("showRivers", "true")
 
       @session.navigation_manager.refresh
 
