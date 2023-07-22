@@ -1,7 +1,5 @@
 module AirAlertMapUaWallpaper
   class Browser
-    LANGUAGES = ["uk", "en", "pl"]
-
     enum Type
       Chrome
       Firefox
@@ -13,6 +11,8 @@ module AirAlertMapUaWallpaper
     # hex     | Гексагональна мапа
     # ascii   | ASCII мапа (don't use)
     LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
+    PRESETS   = ["default", "contrast", "vadym", "black"]
+    LANGUAGES = ["uk", "en", "pl"]
 
     @driver : Selenium::Driver
     @session : Selenium::Session
@@ -59,11 +59,12 @@ module AirAlertMapUaWallpaper
     def take_screenshot(
       language : String = "uk",
       light : Bool = false,
-      preset : String = "default-preset",
+      preset : String = "default",
       map : String = "dynamic"
     ) : File
       lite_map = LITE_MAPS.find(if_none: map, &.==(map))
       language = LANGUAGES.find(if_none: language, &.==(language))
+      preset = PRESETS.find(if_none: preset, &.==(preset))
 
       map_url =
         if language == "uk"
@@ -77,6 +78,8 @@ module AirAlertMapUaWallpaper
 
       local_storage_manager = @session.local_storage_manager
       local_storage_manager.item("liteMap", "\"#{lite_map}\"")
+      local_storage_manager.item("preset", "\"#{preset}\"")
+
       local_storage_manager.item("showRaionBorders", "true")
 
       local_storage_manager.item("showOfficialMapAlerts", "true")
@@ -118,8 +121,6 @@ module AirAlertMapUaWallpaper
           JS
         )
       end
-
-      document_manager.execute_script("document.documentElement.classList.add('#{preset}')")
 
       # Hide "alerts.in.ua" text from the map
       document_manager.execute_script("document.querySelector('#map text.map-attr').style.display = 'none'")
