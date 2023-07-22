@@ -7,11 +7,11 @@ module AirAlertMapUaWallpaper
       Firefox
     end
 
-    # dynamic | dynamic | Швидка
-    # fast    | super   | Спрощена
-    #         | vbasic  | Схематична
-    #         | hex     | Гексагональна мапа
-    # ascii   |         | ASCII мапа (don't use)
+    # dynamic | Швидка | Detailed
+    # super   | Спрощена | Simplifies
+    # vbasic  | Схематична
+    # hex     | Гексагональна мапа
+    # ascii   | ASCII мапа (don't use)
     LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
 
     @driver : Selenium::Driver
