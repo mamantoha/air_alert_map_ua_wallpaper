@@ -12,7 +12,6 @@ module AirAlertMapUaWallpaper
     end
 
     # dynamic | dynamic | Швидка
-    # full    | false   | Класична
     # fast    | super   | Спрощена
     #         | vbasic  | Схематична
     #         | hex     | Гексагональна мапа
@@ -65,9 +64,9 @@ module AirAlertMapUaWallpaper
       language : Lang = Lang::Uk,
       light : Bool = false,
       preset : String = "default-preset",
-      map : String? = nil
+      map : String = "dynamic"
     ) : File
-      lite_map = map.in?(LITE_MAPS) ? "\"#{map}\"" : false
+      lite_map = LITE_MAPS.find { |m| m == map } || map
 
       map_url =
         case language
@@ -79,13 +78,11 @@ module AirAlertMapUaWallpaper
           "https://alerts.in.ua/pl?minimal&disableInteractiveMap"
         end
 
-      map_url = map_url + "&full" unless lite_map
-
       @session.navigate_to(map_url)
       document_manager = @session.document_manager
 
       local_storage_manager = @session.local_storage_manager
-      local_storage_manager.item("liteMap", "#{lite_map}") if lite_map
+      local_storage_manager.item("liteMap", "\"#{lite_map}\"")
       local_storage_manager.item("showRaionBorders", "true")
 
       local_storage_manager.item("showOfficialMapAlerts", "true")
@@ -155,7 +152,7 @@ module AirAlertMapUaWallpaper
       language : String,
       light : Bool = false,
       preset : String = "default-preset",
-      map : String? = nil
+      map : String = "dynamic"
     ) : File
       language =
         case language
