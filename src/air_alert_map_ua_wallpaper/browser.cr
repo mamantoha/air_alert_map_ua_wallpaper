@@ -1,10 +1,6 @@
 module AirAlertMapUaWallpaper
   class Browser
-    enum Lang
-      Uk
-      En
-      Pl
-    end
+    LANGUAGES = ["uk", "en", "pl"]
 
     enum Type
       Chrome
@@ -61,21 +57,19 @@ module AirAlertMapUaWallpaper
     end
 
     def take_screenshot(
-      language : Lang = Lang::Uk,
+      language : String = "uk",
       light : Bool = false,
       preset : String = "default-preset",
       map : String = "dynamic"
     ) : File
-      lite_map = LITE_MAPS.find { |m| m == map } || map
+      lite_map = LITE_MAPS.find(if_none: map, &.==(map))
+      language = LANGUAGES.find(if_none: language, &.==(language))
 
       map_url =
-        case language
-        in Lang::Uk
+        if language == "uk"
           "https://alerts.in.ua?minimal&disableInteractiveMap"
-        in Lang::En
-          "https://alerts.in.ua/en?minimal&disableInteractiveMap"
-        in Lang::Pl
-          "https://alerts.in.ua/pl?minimal&disableInteractiveMap"
+        else
+          "https://alerts.in.ua/#{language}?minimal&disableInteractiveMap"
         end
 
       @session.navigate_to(map_url)
@@ -146,27 +140,6 @@ module AirAlertMapUaWallpaper
     ensure
       @session.delete
       @driver.stop
-    end
-
-    def take_screenshot(
-      language : String,
-      light : Bool = false,
-      preset : String = "default-preset",
-      map : String = "dynamic"
-    ) : File
-      language =
-        case language
-        when "ua"
-          Lang::Uk
-        when "en"
-          Lang::En
-        when "pl"
-          Lang::Pl
-        else
-          Lang::Uk
-        end
-
-      take_screenshot(language, light, preset, map)
     end
   end
 end

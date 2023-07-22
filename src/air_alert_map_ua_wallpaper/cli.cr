@@ -42,7 +42,7 @@ module AirAlertMapUaWallpaper
           config.height = height.to_i
         end
 
-        parser.on("-l", "--language=NAME", "language #{AirAlertMapUaWallpaper::Browser::Lang.names.map(&.downcase).join('|')} (default: #{config.language})") do |name|
+        parser.on("-l", "--language=NAME", "language #{AirAlertMapUaWallpaper::Browser::LANGUAGES.join('|')} (default: #{config.language})") do |name|
           config.language = name
         end
 
