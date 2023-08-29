@@ -34,7 +34,8 @@ module AirAlertMapUaWallpaper
         language: config.language,
         light: config.light?,
         preset: config.preset,
-        map: config.map
+        map: config.map,
+        hide_date: config.hide_date?
       )
 
       wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)

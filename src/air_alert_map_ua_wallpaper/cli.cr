@@ -58,6 +58,10 @@ module AirAlertMapUaWallpaper
           config.map = name
         end
 
+        parser.on("--hide-date", "hide date") do
+          config.hide_date = true
+        end
+
         parser.on("--help", "print this help") do
           puts parser
           exit

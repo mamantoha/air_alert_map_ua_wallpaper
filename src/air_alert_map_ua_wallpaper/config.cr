@@ -10,5 +10,6 @@ module AirAlertMapUaWallpaper
     property? light = false
     property preset = "default"
     property map = "dynamic"
+    property? hide_date = false
   end
 end

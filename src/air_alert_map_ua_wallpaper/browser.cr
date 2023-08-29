@@ -60,7 +60,8 @@ module AirAlertMapUaWallpaper
       language : String = "uk",
       light : Bool = false,
       preset : String = "default",
-      map : String = "dynamic"
+      map : String = "dynamic",
+      hide_date : Bool = false
     ) : File
       lite_map = LITE_MAPS.find(if_none: map, &.==(map))
       language = LANGUAGES.find(if_none: language, &.==(language))
@@ -114,7 +115,7 @@ module AirAlertMapUaWallpaper
       wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
       wait.until { @session.find_element(:css, "#map svg") }
 
-      element = @session.find_element(:css, "#map")
+      map_element = @session.find_element(:css, "#map")
 
       unless light
         # Switch to dark theme
@@ -131,16 +132,23 @@ module AirAlertMapUaWallpaper
       document_manager.execute_script("document.querySelector('#map text.map-attr').style.display = 'none'")
       document_manager.execute_script("document.querySelector('#map text.map-attr-time').style.display = 'none'")
 
-      # Adjust `.credits` section
-      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('top', 'initial')")
-      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('bottom', '7%')")
-      document_manager.execute_script("document.querySelector('.screen.map .credits').style.setProperty('font-size', '1.5vw')")
+      creadits_query = ".screen.map .credits"
+
+      if hide_date
+        credits_element = @session.find_element(:css, creadits_query)
+        credits_element.click
+      else
+        # Adjust `.credits` section
+        document_manager.execute_script("document.querySelector('#{creadits_query}').style.setProperty('top', 'initial')")
+        document_manager.execute_script("document.querySelector('#{creadits_query}').style.setProperty('bottom', '7%')")
+        document_manager.execute_script("document.querySelector('#{creadits_query}').style.setProperty('font-size', '1.5vw')")
+      end
 
       sleep 1.second
 
       tempfile = File.tempfile("alers_wallpaper", ".png")
 
-      element.screenshot(tempfile.path)
+      map_element.screenshot(tempfile.path)
 
       tempfile
     ensure
