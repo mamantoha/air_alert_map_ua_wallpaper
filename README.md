@@ -39,6 +39,7 @@ ARGUMENTS
     --light                          set light wallpaper
     -p, --preset=NAME                preset default|contrast|vadym|black (default: default)
     -m, --map=NAME                   map dynamic|super|vbasic|hex (default: dynamic)
+    --hide-date                      hide date
     --help                           print this help
     -v, --version                    display the version and exit
 ```
