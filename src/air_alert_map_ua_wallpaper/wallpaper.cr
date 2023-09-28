@@ -40,6 +40,9 @@ module AirAlertMapUaWallpaper
 
     # Set the wallpaper on macOS
     # Taken from https://github.com/dylanaraps/pywal/blob/master/pywal/wallpaper.py#L133
+    #
+    # Wallpaper setting stop working in MacOS Sonoma
+    # https://github.com/dylanaraps/pywal/issues/715
     private def set_mac_wallpaper
       img = @file.path.to_s
       db_file = Path.home.join("Library/Application Support/Dock/desktoppicture.db")
