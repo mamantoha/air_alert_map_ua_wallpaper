@@ -11,7 +11,7 @@ module AirAlertMapUaWallpaper
     # hex     | Гексагональна мапа
     # ascii   | ASCII мапа (don't use)
     LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
-    PRESETS   = ["default", "contrast", "vadym", "black"]
+    PRESETS   = ["default", "contrast", "vadym", "st", "black"]
     LANGUAGES = ["uk", "en", "de", "pl", "ja"]
 
     @driver : Selenium::Driver

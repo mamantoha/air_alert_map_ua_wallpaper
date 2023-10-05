@@ -50,7 +50,7 @@ module AirAlertMapUaWallpaper
           config.light = true
         end
 
-        parser.on("-p", "--preset=NAME", "preset default|contrast|vadym|black (default: #{config.preset})") do |name|
+        parser.on("-p", "--preset=NAME", "preset #{AirAlertMapUaWallpaper::Browser::PRESETS.join('|')} (default: #{config.preset})") do |name|
           config.preset = name
         end
 
