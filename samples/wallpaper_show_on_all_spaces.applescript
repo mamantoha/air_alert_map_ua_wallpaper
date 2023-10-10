@@ -7,6 +7,8 @@
 
 -- Tested on MacOS Somona 14.0
 
+-- Implemented with help of ChatGPT, "Script Editor", "Accessibility Inspector" from xCode
+
 tell application id "com.apple.systempreferences"
 	-- activate
 	reveal pane id "com.apple.Wallpaper-Settings.extension"
