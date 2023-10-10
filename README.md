@@ -11,7 +11,7 @@ This script takes a screenshot of the <https://alerts.in.ua> site and set it as 
 Support:
 
 - [x] KDE Plasma (Linux)
-- [x] macOS
+- [x] macOS (Somona)
 
 Required libraries:
 

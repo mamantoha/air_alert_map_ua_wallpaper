@@ -23,7 +23,6 @@ module AirAlertMapUaWallpaper
       sleep 2 # workaround for multi-monitor
     end
 
-    # FIXME Doesn't work with multiple spaces
     private def set_mac_wallpaper
       script = <<-OSA
         tell application "System Events"
@@ -32,6 +31,30 @@ module AirAlertMapUaWallpaper
           end tell
         end tell
         OSA
+
+      command = "osascript -e '#{script}'"
+
+      Process.run(command, shell: true)
+
+      script = <<-OSA
+        tell application id "com.apple.systempreferences"
+          reveal pane id "com.apple.Wallpaper-Settings.extension"
+        end tell
+
+        delay 1
+
+        tell application "System Events"
+          tell process "System Settings"
+            set checkboxState to value of checkbox "Show on all Spaces" of group 2 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window "Wallpaper"
+
+            if checkboxState is 0 then
+              click checkbox "Show on all Spaces" of group 2 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window "Wallpaper"
+            end if
+          end tell
+        end tell
+
+        tell application "System Settings" to quit
+      OSA
 
       command = "osascript -e '#{script}'"
 
