@@ -1,5 +1,4 @@
 require "selenium"
-require "sqlite3"
 require "./air_alert_map_ua_wallpaper/cli"
 require "./air_alert_map_ua_wallpaper/browser"
 require "./air_alert_map_ua_wallpaper/wallpaper"
