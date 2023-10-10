@@ -1,3 +1,12 @@
+-- This script:
+
+-- 1. Opens the System Preferences and reveals the Wallpaper pane.
+-- 2. Checks the state of the "Show on all Spaces" checkbox.
+-- 3. Clicks on the checkbox to enable it if it's not already enabled.
+-- 4. Closes the System Preferences application.
+
+-- Tested on MacOS Somona 14.0
+
 tell application id "com.apple.systempreferences"
 	-- activate
 	reveal pane id "com.apple.Wallpaper-Settings.extension"
