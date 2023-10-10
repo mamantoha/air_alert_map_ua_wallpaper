@@ -11,9 +11,9 @@
 
 tell application id "com.apple.systempreferences"
 	-- activate
-	reveal pane id "com.apple.Wallpaper-Settings.extension"
 	-- set aList to properties of current pane
 	-- {class:pane, name:"Wallpaper", id:"com.apple.Wallpaper-Settings.extension"}
+	reveal pane id "com.apple.Wallpaper-Settings.extension"
 end tell
 
 delay 1 -- Add a short delay to ensure the pane is fully loaded

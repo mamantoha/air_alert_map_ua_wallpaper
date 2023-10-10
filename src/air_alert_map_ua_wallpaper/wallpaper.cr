@@ -36,6 +36,7 @@ module AirAlertMapUaWallpaper
 
       Process.run(command, shell: true)
 
+      # Check `samples/wallpaper_schow_on_all_spaces.applescript` for more info
       script = <<-OSA
         tell application id "com.apple.systempreferences"
           reveal pane id "com.apple.Wallpaper-Settings.extension"
