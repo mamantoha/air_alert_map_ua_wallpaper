@@ -15,7 +15,17 @@ module AirAlertMapUaWallpaper
     end
 
     private def set_kde_wallpaper
-      command = "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '#{kde_wallpaper_script}'"
+      script = <<-JS
+        var allDesktops = desktops();
+        for (i = 0; i < allDesktops.length; i++) {
+          d = allDesktops[i];
+          d.wallpaperPlugin = "org.kde.image";
+          d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
+          d.writeConfig("Image", "file://#{@file.path}")
+        }
+        JS
+
+      command = "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '#{script}'"
 
       output = IO::Memory.new
       Process.run(command, shell: true, output: output)
@@ -60,18 +70,6 @@ module AirAlertMapUaWallpaper
       command = "osascript -e '#{script}'"
 
       Process.run(command, shell: true)
-    end
-
-    private def kde_wallpaper_script
-      <<-JS
-        var allDesktops = desktops();
-        for (i = 0; i < allDesktops.length; i++) {
-          d = allDesktops[i];
-          d.wallpaperPlugin = "org.kde.image";
-          d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
-          d.writeConfig("Image", "file://#{@file.path}")
-        }
-        JS
     end
   end
 end
