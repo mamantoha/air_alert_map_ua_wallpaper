@@ -2,5 +2,5 @@ version: 2.0
 shards:
   selenium:
     git: https://github.com/crystal-loot/selenium.cr.git
-    version: 0.12.0+git.commit.44f16610f1749aeac3b92465643f741156f4429b
+    version: 0.12.1+git.commit.ee3d6c37342a53849e0576bfbf0df982a21baa05
 
