@@ -8,6 +8,8 @@ dependencies:
   selenium:
     github: crystal-loot/selenium.cr
     branch: master
+  bplist:
+    github: mamantoha/crystal-bplist
 
 targets:
   air_alert_map_ua_wallpaper:

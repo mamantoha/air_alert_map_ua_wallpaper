@@ -1,5 +1,13 @@
 version: 2.0
 shards:
+  bplist:
+    git: https://github.com/mamantoha/crystal-bplist.git
+    version: 0.1.0+git.commit.ce0f9aaaf3fa1a7419aa2d849a7f2adc60449940
+
+  bytes_ext:
+    git: https://github.com/mamantoha/bytes_ext.git
+    version: 0.1.0
+
   selenium:
     git: https://github.com/crystal-loot/selenium.cr.git
     version: 0.12.1+git.commit.ee3d6c37342a53849e0576bfbf0df982a21baa05
