@@ -2,7 +2,7 @@ version: 2.0
 shards:
   bplist:
     git: https://github.com/mamantoha/crystal-bplist.git
-    version: 0.1.0+git.commit.7040772c568a0aa310ae47c10df8b11dcc1e1ed7
+    version: 0.1.0+git.commit.c36b8e763ef099256c2cdf654330ff900b92ee31
 
   bytes_ext:
     git: https://github.com/mamantoha/bytes_ext.git
