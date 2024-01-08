@@ -1,4 +1,5 @@
 require "selenium"
+require "bplist"
 require "./air_alert_map_ua_wallpaper/cli"
 require "./air_alert_map_ua_wallpaper/browser"
 require "./air_alert_map_ua_wallpaper/wallpaper"

@@ -34,42 +34,52 @@ module AirAlertMapUaWallpaper
     end
 
     private def set_mac_wallpaper
-      script = <<-OSA
-        tell application "System Events"
-          tell every desktop
-            set picture to POSIX file "#{@file.path.to_s}"
-          end tell
-        end tell
-        OSA
+      path = "#{Path.home}/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
+      bplist = Bplist::Parser.new(path)
 
-      command = "osascript -e '#{script}'"
+      result = bplist.parse
 
-      Process.run(command, shell: true)
+      modified_result = rebuild_and_modify_bplist_any(result)
 
-      # Check `samples/wallpaper_schow_on_all_spaces.applescript` for more info
-      script = <<-OSA
-        tell application id "com.apple.systempreferences"
-          reveal pane id "com.apple.Wallpaper-Settings.extension"
-        end tell
+      writer = Bplist::Writer.new(modified_result.as_h)
 
-        delay 1
+      writer.write_to_file(path)
 
-        tell application "System Events"
-          tell process "System Settings"
-            set checkboxState to value of checkbox "Show on all Spaces" of group 2 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window "Wallpaper"
+      Process.run("killall WallpaperAgent", shell: true)
+    end
 
-            if checkboxState is 0 then
-              click checkbox "Show on all Spaces" of group 2 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window "Wallpaper"
-            end if
-          end tell
-        end tell
+    private def rebuild_and_modify_bplist_any(value : Bplist::Any, path = [] of String) : Bplist::Any
+      value = value.raw
 
-        tell application "System Settings" to quit
-      OSA
+      case value
+      when Array
+        # Convert each element of the array
+        converted_array = value.map_with_index do |item, index|
+          new_path = path + ["[#{index}]"]
 
-      command = "osascript -e '#{script}'"
+          rebuild_and_modify_bplist_any(item, new_path)
+        end
 
-      Process.run(command, shell: true)
+        Bplist::Any.new(converted_array)
+      when Hash
+        # Convert each key-value pair of the hash
+        converted_hash = Hash(String, Bplist::Any).new
+        value.each do |key, val|
+          new_path = path + [key]
+
+          converted_hash[key] = rebuild_and_modify_bplist_any(val, new_path)
+        end
+
+        Bplist::Any.new(converted_hash)
+      when Bplist::Any::ValueType
+        if path.last(3) == ["Files", "[0]", "relative"]
+          value = "file://#{@file.path.to_s}"
+        end
+
+        Bplist::Any.new(value)
+      else
+        raise Bplist::Error.new("Unsupported type: #{value.class}")
+      end
     end
   end
 end
