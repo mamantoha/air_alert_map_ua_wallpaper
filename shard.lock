@@ -6,7 +6,7 @@ shards:
 
   bytes_ext:
     git: https://github.com/mamantoha/bytes_ext.git
-    version: 0.1.0
+    version: 0.2.0
 
   selenium:
     git: https://github.com/crystal-loot/selenium.cr.git
