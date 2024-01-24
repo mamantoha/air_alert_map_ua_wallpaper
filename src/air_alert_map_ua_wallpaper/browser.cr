@@ -91,6 +91,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showOfficialMapAlerts", "true")
       local_storage_manager.item("showLocalAlerts", "true")
       local_storage_manager.item("showThreats", "true")
+      local_storage_manager.item("showAlertDurations", "true")
       local_storage_manager.item("showPotentialThreats", "true")
       local_storage_manager.item("showWarnings", "true")
       local_storage_manager.item("showUnofficialArtillery", "true")
