@@ -55,7 +55,6 @@ module AirAlertMapUaWallpaper
 
     {% if flag?(:win32) %}
       private def set_windows_wallpaper
-        puts @file.path.inspect
         result = LibWin32.SystemParametersInfoA(
           LibWin32::SYSTEM_PARAMETERS_INFO_ACTION::SPI_SETDESKWALLPAPER,
           0,
