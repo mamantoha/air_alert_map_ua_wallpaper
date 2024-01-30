@@ -9,6 +9,10 @@ module AirAlertMapUaWallpaper
 
     {% if flag?(:linux) %}
       def set_wallpaper
+        set_kde_wallpaper
+      end
+
+      private def set_kde_wallpaper
         # https://invent.kde.org/plasma/plasma-workspace/-/blame/master/wallpapers/image/plasma-apply-wallpaperimage.cpp#L71
         script = <<-JS
         var allDesktops = desktops();
