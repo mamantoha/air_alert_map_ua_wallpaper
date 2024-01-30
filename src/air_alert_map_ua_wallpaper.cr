@@ -48,14 +48,18 @@ module AirAlertMapUaWallpaper
 
   def chromedriver_path : String?
     {% if flag?(:win32) %}
-      "C:\\Windows\\chromedriver.exe"
+      `where.exe chromedriver`.strip.presence
     {% else %}
       `whereis chromedriver`.split(":")[1].strip.presence
     {% end %}
   end
 
   def geckodriver_path : String?
-    `whereis geckodriver`.split(":")[1].strip.presence
+    {% if flag?(:win32) %}
+      `where.exe geckodriver`.strip.presence
+    {% else %}
+      `whereis geckodriver`.split(":")[1].strip.presence
+    {% end %}
   end
 end
 
