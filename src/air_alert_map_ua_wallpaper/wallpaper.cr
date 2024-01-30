@@ -1,3 +1,5 @@
+require "./ext/lib_win_32.cr"
+
 module AirAlertMapUaWallpaper
   class Wallpaper
     @file : File
@@ -11,6 +13,8 @@ module AirAlertMapUaWallpaper
         set_kde_wallpaper
       when "macos"
         set_mac_wallpaper
+      when "windows"
+        set_windows_wallpaper
       end
     end
 
@@ -47,6 +51,19 @@ module AirAlertMapUaWallpaper
       writer.write_to_file(path)
 
       Process.run("killall WallpaperAgent", shell: true)
+    end
+
+    private def set_windows_wallpaper
+      puts @file.path.inspect
+      result = LibWin32.SystemParametersInfoA(
+        LibWin32::SYSTEM_PARAMETERS_INFO_ACTION::SPI_SETDESKWALLPAPER,
+        0,
+        @file.path.to_unsafe.as(UInt8*),
+        LibWin32::SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS::SPIF_UPDATEINIFILE | LibWin32::SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS::SPIF_SENDCHANGE
+      )
+      unless result
+        raise "Failed to set wallpaper"
+      end
     end
 
     private def rebuild_and_modify_bplist_any(value : Bplist::Any, path = [] of String) : Bplist::Any

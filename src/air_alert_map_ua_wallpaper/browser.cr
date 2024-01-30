@@ -154,6 +154,8 @@ module AirAlertMapUaWallpaper
 
       map_element.screenshot(tempfile.path)
 
+      tempfile.close
+
       tempfile
     ensure
       @session.delete
