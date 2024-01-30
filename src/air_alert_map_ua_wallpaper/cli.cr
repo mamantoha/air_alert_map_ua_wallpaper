@@ -69,8 +69,12 @@ module AirAlertMapUaWallpaper
 
         parser.on("-v", "--version", "display the version and exit") do
           default_target = Crystal::DESCRIPTION.split.last
-          # release_date = {{ `date -R`.stringify.chomp }}
-          release_date = "2024"
+
+          {% if flag?(:win32) %}
+            release_date = "2024"
+          {% else %}
+            release_date = {{ `date -R`.stringify.chomp }}
+          {% end %}
 
           puts "#{AirAlertMapUaWallpaper::NAME} #{AirAlertMapUaWallpaper::VERSION} (#{default_target}) crystal/#{Crystal::VERSION}"
           puts "Release-Date: #{Time.parse_rfc2822(release_date).to_s("%Y-%m-%d")}"
