@@ -38,8 +38,8 @@ module AirAlertMapUaWallpaper
         hide_date: config.hide_date?
       )
 
-      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
-      wallpaper.set!
+      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file)
+      wallpaper.set_wallpaper
     else
       puts "Please install chromedriver or geckodriver"
       exit

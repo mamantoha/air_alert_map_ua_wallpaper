@@ -26,10 +26,6 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
-        parser.on("-t", "--target=NAME", "target platform: kde|macos|windows (default: #{config.target})") do |target|
-          config.target = target
-        end
-
         parser.on("-b", "--browser=NAME", "browser: #{AirAlertMapUaWallpaper::Browser::Type.names.map(&.downcase).join('|')} (default: #{config.browser})") do |browser|
           config.browser = browser
         end

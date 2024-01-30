@@ -32,7 +32,6 @@ SYNOPSIS
     air_alert_map_ua_wallpaper [arguments]
 
 ARGUMENTS
-    -t, --target=NAME                target platform: kde|macos (default: kde)
     -b, --browser=NAME               browser: chrome|firefox (default: chrome)
     -w, --width=PIXELS               specify a desired width in pixels (default: 2560)
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
