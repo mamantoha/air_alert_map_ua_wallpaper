@@ -72,7 +72,7 @@ module AirAlertMapUaWallpaper
 
           release_date =
             {% if flag?(:win32) %}
-              "2024"
+              {{ `powershell -Command "Get-Date -Format 'R'"`.stringify.chomp }}
             {% else %}
               {{ `date -R`.stringify.chomp }}
             {% end %}
