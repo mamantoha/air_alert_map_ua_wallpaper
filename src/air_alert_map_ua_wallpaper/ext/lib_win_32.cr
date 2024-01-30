@@ -19,7 +19,6 @@
       SPIF_SENDCHANGE    = 2
     end
 
-    # Params # uiaction : SYSTEM_PARAMETERS_INFO_ACTION [In],uiparam : UInt32 [In],pvparam : Void* [In],fwinini : SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS [In]
     fun SystemParametersInfoA(uiaction : SYSTEM_PARAMETERS_INFO_ACTION, uiparam : UInt32, pvparam : Void*, fwinini : SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS) : LibC::BOOL
   end
 {% end %}
