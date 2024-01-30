@@ -15,14 +15,14 @@ module AirAlertMapUaWallpaper
       private def set_kde_wallpaper
         # https://invent.kde.org/plasma/plasma-workspace/-/blame/master/wallpapers/image/plasma-apply-wallpaperimage.cpp#L71
         script = <<-JS
-        var allDesktops = desktops();
-        for (i = 0; i < allDesktops.length; i++) {
-          d = allDesktops[i];
-          d.wallpaperPlugin = "org.kde.image";
-          d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
-          d.writeConfig("Image", "file://#{@file.path}")
-        }
-        JS
+          var allDesktops = desktops();
+          for (i = 0; i < allDesktops.length; i++) {
+            d = allDesktops[i];
+            d.wallpaperPlugin = "org.kde.image";
+            d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
+            d.writeConfig("Image", "file://#{@file.path}")
+          }
+          JS
 
         command = "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '#{script}'"
 
