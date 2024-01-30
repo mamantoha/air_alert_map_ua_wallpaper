@@ -12,6 +12,7 @@ Support:
 
 - [x] KDE Plasma (Linux)
 - [x] macOS (Somona)
+- [x] Windows
 
 Required libraries:
 
