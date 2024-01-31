@@ -3,6 +3,7 @@ require "bplist"
 require "./air_alert_map_ua_wallpaper/cli"
 require "./air_alert_map_ua_wallpaper/browser"
 require "./air_alert_map_ua_wallpaper/wallpaper"
+require "./air_alert_map_ua_wallpaper/helpers/screen_resolution"
 
 module AirAlertMapUaWallpaper
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
@@ -17,15 +18,30 @@ module AirAlertMapUaWallpaper
   def run
     CLI.new
 
+    width = height = nil
+
+    if resolution = ScreenResolution.get_screen_resolution
+      if config.default_resolution?
+        width = resolution[:width]
+        height = resolution[:height]
+      end
+    end
+
+    width = width || config.width
+    height = height || config.height
+
+    p! width
+    p! height
+
     browser =
       case config.browser
       when "chrome"
         if path = chromedriver_path
-          AirAlertMapUaWallpaper::Browser.new(Browser::Type::Chrome, path, width: config.width, height: config.height)
+          AirAlertMapUaWallpaper::Browser.new(Browser::Type::Chrome, path, width: width, height: height)
         end
       when "firefox"
         if path = geckodriver_path
-          AirAlertMapUaWallpaper::Browser.new(Browser::Type::Firefox, path, width: config.width, height: config.height)
+          AirAlertMapUaWallpaper::Browser.new(Browser::Type::Firefox, path, width: width, height: height)
         end
       end
 

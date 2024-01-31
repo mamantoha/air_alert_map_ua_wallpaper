@@ -5,6 +5,7 @@ module AirAlertMapUaWallpaper
     property browser = "chrome"
     property width = 2560
     property height = 1440
+    property? default_resolution = true
     property language = "uk"
     property? light = false
     property preset = "default"

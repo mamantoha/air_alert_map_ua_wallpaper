@@ -32,10 +32,12 @@ module AirAlertMapUaWallpaper
 
         parser.on("-w", "--width=PIXELS", "specify a desired width in pixels (default: #{config.width})") do |width|
           config.width = width.to_i
+          config.default_resolution = false
         end
 
         parser.on("-h", "--height=PIXELS", "specify a desired height in pixels (default: #{config.height})") do |height|
           config.height = height.to_i
+          config.default_resolution = false
         end
 
         parser.on("-l", "--language=NAME", "language #{AirAlertMapUaWallpaper::Browser::LANGUAGES.join('|')} (default: #{config.language})") do |name|
