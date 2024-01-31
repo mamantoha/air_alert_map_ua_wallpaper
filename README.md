@@ -55,7 +55,7 @@ ARGUMENTS
 Set the wallpaper on macOS:
 
 ```
-air_alert_map_ua_wallpaper -t macos -w 3456 -h 2234
+air_alert_map_ua_wallpaper -w 3456 -h 2234
 ```
 
 ### Linux
@@ -91,7 +91,7 @@ Add the following content to the plist file `~/Library/LaunchAgents/com.example.
         <string>-c</string>
         <string>
         export PATH=$PATH:/opt/homebrew/bin
-        while true; do ~/bin/air_alert_map_ua_wallpaper -t macos -w 3456 -h 2234; sleep 300; done
+        while true; do ~/bin/air_alert_map_ua_wallpaper -w 3456 -h 2234; sleep 300; done
         </string>
     </array>
     <key>RunAtLoad</key>
