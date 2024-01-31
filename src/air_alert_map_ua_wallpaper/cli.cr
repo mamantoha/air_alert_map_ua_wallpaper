@@ -26,10 +26,6 @@ module AirAlertMapUaWallpaper
         ARGUMENTS
         BANNER
 
-        parser.on("-t", "--target=NAME", "target platform: kde|macos (default: #{config.target})") do |target|
-          config.target = target
-        end
-
         parser.on("-b", "--browser=NAME", "browser: #{AirAlertMapUaWallpaper::Browser::Type.names.map(&.downcase).join('|')} (default: #{config.browser})") do |browser|
           config.browser = browser
         end
@@ -69,7 +65,13 @@ module AirAlertMapUaWallpaper
 
         parser.on("-v", "--version", "display the version and exit") do
           default_target = Crystal::DESCRIPTION.split.last
-          release_date = {{ `date -R`.stringify.chomp }}
+
+          release_date =
+            {% if flag?(:win32) %}
+              {{ `powershell -Command "Get-Date -Format 'R'"`.stringify.chomp }}
+            {% else %}
+              {{ `date -R`.stringify.chomp }}
+            {% end %}
 
           puts "#{AirAlertMapUaWallpaper::NAME} #{AirAlertMapUaWallpaper::VERSION} (#{default_target}) crystal/#{Crystal::VERSION}"
           puts "Release-Date: #{Time.parse_rfc2822(release_date).to_s("%Y-%m-%d")}"

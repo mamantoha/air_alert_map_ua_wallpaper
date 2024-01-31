@@ -38,8 +38,8 @@ module AirAlertMapUaWallpaper
         hide_date: config.hide_date?
       )
 
-      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file, config.target)
-      wallpaper.set!
+      wallpaper = AirAlertMapUaWallpaper::Wallpaper.new(file)
+      wallpaper.set_wallpaper
     else
       puts "Please install chromedriver or geckodriver"
       exit
@@ -47,11 +47,19 @@ module AirAlertMapUaWallpaper
   end
 
   def chromedriver_path : String?
-    `whereis chromedriver`.split(":")[1].strip.presence
+    {% if flag?(:win32) %}
+      `where.exe chromedriver`.strip.presence
+    {% else %}
+      `whereis chromedriver`.split(":")[1].strip.presence
+    {% end %}
   end
 
   def geckodriver_path : String?
-    `whereis geckodriver`.split(":")[1].strip.presence
+    {% if flag?(:win32) %}
+      `where.exe geckodriver`.strip.presence
+    {% else %}
+      `whereis geckodriver`.split(":")[1].strip.presence
+    {% end %}
   end
 end
 
