@@ -11,6 +11,19 @@ module AirAlertMapUaWallpaper
 
         {width: width, height: height}
       end
+    {% elsif flag?(:darwin) %}
+      def get_screen_resolution
+        path = "/Library/Preferences/com.apple.windowserver.displays.plist"
+
+        result = Bplist::Parser.parse(path)
+
+        info = result.as_h.dig("DisplayAnyUserSets", "Configs").as_a[0].as_h["DisplayConfig"].as_a[0].as_h["CurrentInfo"].as_h
+
+        width = info["Wide"].as_f.to_i * info["Scale"].as_f.to_i
+        height = info["High"].as_f.to_i * info["Scale"].as_f.to_i
+
+        {width: width, height: height}
+      end
     {% else %}
       def get_screen_resolution; end
     {% end %}
