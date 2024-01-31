@@ -4,14 +4,32 @@ module AirAlertMapUaWallpaper
   module ScreenResolution
     extend self
 
-    {% if flag?(:win32) %}
+    {% if flag?(:linux) %}
       def get_screen_resolution
-        width = LibWin32.GetSystemMetrics(LibWin32::SYSTEM_METRICS_INDEX::SM_CXSCREEN)
-        height = LibWin32.GetSystemMetrics(LibWin32::SYSTEM_METRICS_INDEX::SM_CYSCREEN)
-
-        {width: width, height: height}
+        get_kde_screen_resolution
       end
-    {% elsif flag?(:darwin) %}
+
+      def get_kde_screen_resolution
+        output = `qdbus org.kde.KWin /KWin org.kde.KWin.supportInformation`
+
+        geometry_regex = /\n+Geometry: \d+,\d+,(\d+)x(\d+)\n/
+        scale_regex = /\nScale: (\d+(?:\.\d+)?)\n/
+
+        geometry_match = geometry_regex.match(output)
+        scale_match = scale_regex.match(output)
+
+        if geometry_match && scale_match
+          width = geometry_match[1].to_i * scale_match[1].to_f
+          height = geometry_match[2].to_i * scale_match[1].to_f
+
+          {width: width.to_i, height: height.to_i}
+        else
+          nil
+        end
+      end
+    {% end %}
+
+    {% if flag?(:darwin) %}
       def get_screen_resolution
         path = "/Library/Preferences/com.apple.windowserver.displays.plist"
 
@@ -24,28 +42,15 @@ module AirAlertMapUaWallpaper
 
         {width: width, height: height}
       end
-    {% elsif flag?(:linux) %}
+    {% end %}
+
+    {% if flag?(:win32) %}
       def get_screen_resolution
-        output = `qdbus org.kde.KWin /KWin org.kde.KWin.supportInformation`
+        width = LibWin32.GetSystemMetrics(LibWin32::SYSTEM_METRICS_INDEX::SM_CXSCREEN)
+        height = LibWin32.GetSystemMetrics(LibWin32::SYSTEM_METRICS_INDEX::SM_CYSCREEN)
 
-        geometry_regex = /\n+Geometry: \d+,\d+,(\d+)x(\d+)\n/
-        scale_regex = /\nScale: (\d+(?:\.\d+)?)\n/
-
-        geometry_match = geometry_regex.match(output)
-        scale_match = scale_regex.match(output)
-
-        result =
-          if geometry_match && scale_match
-            width = geometry_match[1].to_i * scale_match[1].to_f
-            height = geometry_match[2].to_i * scale_match[1].to_f
-
-            {width: width.to_i, height: height.to_i}
-          else
-            nil
-          end
+        {width: width, height: height}
       end
-    {% else %}
-      def get_screen_resolution; end
     {% end %}
   end
 end
