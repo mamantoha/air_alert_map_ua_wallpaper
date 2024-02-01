@@ -52,7 +52,7 @@ ARGUMENTS
 
 ## Usage
 
-Set the wallpaper on macOS:
+Set the wallpaper with a custom resolution:
 
 ```
 air_alert_map_ua_wallpaper -w 3456 -h 2234
@@ -91,7 +91,7 @@ Add the following content to the plist file `~/Library/LaunchAgents/com.example.
         <string>-c</string>
         <string>
         export PATH=$PATH:/opt/homebrew/bin
-        while true; do ~/bin/air_alert_map_ua_wallpaper -w 3456 -h 2234; sleep 300; done
+        while true; do ~/bin/air_alert_map_ua_wallpaper; sleep 300; done
         </string>
     </array>
     <key>RunAtLoad</key>
