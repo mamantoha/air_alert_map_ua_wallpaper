@@ -30,9 +30,6 @@ module AirAlertMapUaWallpaper
     width = width || config.width
     height = height || config.height
 
-    p! width
-    p! height
-
     browser =
       case config.browser
       when "chrome"
