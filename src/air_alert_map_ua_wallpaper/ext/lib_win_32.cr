@@ -2,13 +2,7 @@
 
 {% if flag?(:win32) %}
   @[Link("user32")]
-  {% if compare_versions(Crystal::VERSION, "1.8.2") <= 0 %}
-    @[Link(ldflags: "/DELAYLOAD:user32.dll")]
-    @[Link(ldflags: "/DELAYLOAD:mrmsupport.dll")]
-  {% else %}
-    @[Link("user32")]
-    @[Link("mrmsupport")]
-  {% end %}
+  @[Link("mrmsupport")]
   lib LibWin32
     enum SYSTEM_PARAMETERS_INFO_ACTION : UInt32
       SPI_SETDESKWALLPAPER = 20
