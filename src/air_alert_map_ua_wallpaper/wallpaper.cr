@@ -36,14 +36,12 @@ module AirAlertMapUaWallpaper
     {% if flag?(:darwin) %}
       def set_wallpaper
         path = "#{Path.home}/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
-        bplist = Bplist::Parser.new(path)
 
-        result = bplist.parse
+        result = Bplist.parse(path)
 
         modified_result = rebuild_and_modify_bplist_any(result)
 
         writer = Bplist::Writer.new(modified_result.as_h)
-
         writer.write_to_file(path)
 
         Process.run("killall WallpaperAgent", shell: true)
