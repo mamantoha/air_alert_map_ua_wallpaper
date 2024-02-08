@@ -15,6 +15,6 @@ targets:
   air_alert_map_ua_wallpaper:
     main: src/air_alert_map_ua_wallpaper.cr
 
-crystal: 1.10.1
+crystal: 1.11.2
 
 license: MIT
