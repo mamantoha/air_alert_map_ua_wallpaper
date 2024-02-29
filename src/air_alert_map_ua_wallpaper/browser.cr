@@ -17,9 +17,9 @@ module AirAlertMapUaWallpaper
     @driver : Selenium::Driver
     @session : Selenium::Session
 
-    def initialize(type : Type, driver_path : String, width = 2560, height = 1440)
+    def initialize(@type : Type, driver_path : String, width = 2560, height = 1440)
       @driver, @session =
-        case type
+        case @type
         in .firefox?
           create_firefox_session(driver_path)
         in .chrome?
