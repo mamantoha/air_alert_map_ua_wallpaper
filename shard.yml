@@ -6,8 +6,10 @@ authors:
 
 dependencies:
   selenium:
-    github: crystal-loot/selenium.cr
-    branch: master
+    # github: crystal-loot/selenium.cr
+    # branch: master
+    github: mamantoha/selenium.cr
+    branch: chrome-logging
   bplist:
     github: mamantoha/crystal-bplist
 
