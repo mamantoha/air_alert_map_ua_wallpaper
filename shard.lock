@@ -9,6 +9,6 @@ shards:
     version: 0.2.0
 
   selenium:
-    git: https://github.com/crystal-loot/selenium.cr.git
-    version: 0.12.1+git.commit.ee3d6c37342a53849e0576bfbf0df982a21baa05
+    git: https://github.com/mamantoha/selenium.cr.git
+    version: 0.12.1+git.commit.b7e4ce81c3d87fd3eec5c655733e0121879c9f89
 
