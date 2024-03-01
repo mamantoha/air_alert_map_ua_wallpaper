@@ -25,6 +25,7 @@ module AirAlertMapUaWallpaper
       driver = Selenium::Driver.for(:chrome, service: service)
       capabilities = Selenium::Chrome::Capabilities.new
       capabilities.chrome_options.args = ["no-sandbox", "headless", "disable-gpu"]
+      capabilities.logging_prefs = {"browser" => "ALL"}
 
       session = driver.create_session(capabilities)
       {driver, session}
@@ -97,16 +98,14 @@ module AirAlertMapUaWallpaper
 
       @session.navigation_manager.refresh
 
-      # wait for console.log("loaded map") to be called
-      # document_manager.execute_async_script(
-      #   <<-JS
-      #   var callback = arguments[0];
-      #   console.log = function(message) {
-      #     if(message === "loaded map")
-      #       callback();
-      #   };
-      #   JS
-      # )
+      if @type.chrome?
+        wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
+
+        # wait for console.log("loaded map") to be called
+        wait.until do
+          @session.log("browser").any? &.message.ends_with?("\"loaded map\"")
+        end
+      end
 
       wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
       wait.until { @session.find_element(:css, "#map svg") }
