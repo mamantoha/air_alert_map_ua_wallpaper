@@ -102,6 +102,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showNeighbourRegions", "true")
       local_storage_manager.item("showRivers", "true")
       local_storage_manager.item("showAllOccupiedRegions", "true")
+      local_storage_manager.item("smartAlertGrouping", "true")
 
       @session.navigation_manager.refresh
 
