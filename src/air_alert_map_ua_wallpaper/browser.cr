@@ -63,9 +63,9 @@ module AirAlertMapUaWallpaper
       map : String = "dynamic",
       hide_date : Bool = false
     ) : File
-      lite_map = LITE_MAPS.find(if_none: map, &.==(map))
-      language = LANGUAGES.find(if_none: language, &.==(language))
-      preset = PRESETS.find(if_none: preset, &.==(preset))
+      lite_map = LITE_MAPS.find(if_none: map, &.==("dynamic"))
+      language = LANGUAGES.find(if_none: language, &.==("uk"))
+      preset = PRESETS.find(if_none: preset, &.==("default"))
 
       map_url =
         if language == "uk"
