@@ -40,7 +40,7 @@ module AirAlertMapUaWallpaper
           config.default_resolution = false
         end
 
-        parser.on("-l", "--language=NAME", "language #{AirAlertMapUaWallpaper::Browser::LANGUAGES.join('|')} (default: #{config.language})") do |name|
+        parser.on("-l", "--language=NAME", "language #{AirAlertMapUaWallpaper::LANGUAGES.join('|')} (default: #{config.language})") do |name|
           config.language = name
         end
 
@@ -48,11 +48,11 @@ module AirAlertMapUaWallpaper
           config.light = true
         end
 
-        parser.on("-p", "--preset=NAME", "preset #{AirAlertMapUaWallpaper::Browser::PRESETS.join('|')} (default: #{config.preset})") do |name|
+        parser.on("-p", "--preset=NAME", "preset #{AirAlertMapUaWallpaper::PRESETS.join('|')} (default: #{config.preset})") do |name|
           config.preset = name
         end
 
-        parser.on("-m", "--map=NAME", "map dynamic|super|vbasic|hex (default: #{config.map})") do |name|
+        parser.on("-m", "--map=NAME", "map #{AirAlertMapUaWallpaper::LITE_MAPS.join('|')} (default: #{config.map})") do |name|
           config.map = name
         end
 

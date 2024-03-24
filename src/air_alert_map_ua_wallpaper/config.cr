@@ -6,10 +6,10 @@ module AirAlertMapUaWallpaper
     property width = 2560
     property height = 1440
     property? default_resolution = true
-    property language = "uk"
+    property language = DEFAULT_LANGUAGE
     property? light = false
-    property preset = "default"
-    property map = "dynamic"
+    property preset = DEFAULT_PRESET
+    property map = DEFAULT_MAP
     property? hide_date = false
   end
 end

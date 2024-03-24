@@ -5,15 +5,6 @@ module AirAlertMapUaWallpaper
       Firefox
     end
 
-    # dynamic | Швидка | Detailed
-    # super   | Спрощена | Simplifies
-    # vbasic  | Схематична
-    # hex     | Гексагональна мапа
-    # ascii   | ASCII мапа (don't use)
-    LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
-    PRESETS   = ["default", "contrast", "vadym", "st", "black"]
-    LANGUAGES = ["uk", "en", "de", "pl", "ja", "crh"]
-
     @driver : Selenium::Driver
     @session : Selenium::Session
 
@@ -57,15 +48,15 @@ module AirAlertMapUaWallpaper
     end
 
     def take_screenshot(
-      language : String = "uk",
+      language : String = DEFAULT_LANGUAGE,
       light : Bool = false,
-      preset : String = "default",
-      map : String = "dynamic",
+      preset : String = DEFAULT_PRESET,
+      map : String = DEFAULT_MAP,
       hide_date : Bool = false
     ) : File
-      lite_map = LITE_MAPS.find(if_none: map, &.==("dynamic"))
-      language = LANGUAGES.find(if_none: language, &.==("uk"))
-      preset = PRESETS.find(if_none: preset, &.==("default"))
+      lite_map = LITE_MAPS.find(if_none: DEFAULT_MAP, &.==(map))
+      language = LANGUAGES.find(if_none: DEFAULT_LANGUAGE, &.==(language))
+      preset = PRESETS.find(if_none: DEFAULT_PRESET, &.==(preset))
 
       map_url =
         if language == "uk"
