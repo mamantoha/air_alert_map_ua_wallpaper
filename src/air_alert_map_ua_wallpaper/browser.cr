@@ -92,6 +92,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showMapIcons", "true")
       local_storage_manager.item("showHromadas", "true")
       local_storage_manager.item("showNeighbourRegions", "true")
+      local_storage_manager.item("showLongTermAlerts", "true")
       local_storage_manager.item("showRivers", "true")
       local_storage_manager.item("showAllOccupiedRegions", "true")
       local_storage_manager.item("smartAlertGrouping", "true")
