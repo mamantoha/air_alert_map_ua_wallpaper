@@ -1,3 +1,4 @@
+# NOTICE: This lockfile contains some overrides from shard.override.yml
 version: 2.0
 shards:
   bplist:
@@ -8,7 +9,7 @@ shards:
     git: https://github.com/mamantoha/bytes_ext.git
     version: 0.2.0
 
-  selenium:
+  selenium: # Overridden
     git: https://github.com/mamantoha/selenium.cr.git
     version: 0.12.1+git.commit.b7e4ce81c3d87fd3eec5c655733e0121879c9f89
 
