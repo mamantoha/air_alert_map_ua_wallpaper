@@ -1,0 +1,4 @@
+dependencies:
+  selenium:
+    github: mamantoha/selenium.cr
+    branch: chrome-logging
