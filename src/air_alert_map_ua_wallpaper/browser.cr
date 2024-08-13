@@ -78,23 +78,35 @@ module AirAlertMapUaWallpaper
         local_storage_manager.item("contrastMode", "true")
       end
 
-      local_storage_manager.item("showRaionBorders", "true")
-
       local_storage_manager.item("showOfficialMapAlerts", "true")
       local_storage_manager.item("showLocalAlerts", "true")
-      local_storage_manager.item("showThreats", "true")
       local_storage_manager.item("showAlertDurations", "true")
+
+      # Official Sources
+      local_storage_manager.item("showThreats", "true")
       local_storage_manager.item("showPotentialThreats", "true")
+      local_storage_manager.item("showArtillery", "true")
+      local_storage_manager.item("showMissilesInFlight", "true")
+      local_storage_manager.item("showCityMissilesInFlight", "true")
+
+      # OSINT Sources
       local_storage_manager.item("showWarnings", "true")
       local_storage_manager.item("showUnofficialArtillery", "true")
-      local_storage_manager.item("showForeignEvents", "true")
+      local_storage_manager.item("showDemining", "true")
+      local_storage_manager.item("showUnofficialDrones", "true")
+      local_storage_manager.item("showUnofficialCityMissilesInFlight", "true")
 
-      local_storage_manager.item("showMapIcons", "true")
-      local_storage_manager.item("showHromadas", "true")
-      local_storage_manager.item("showNeighbourRegions", "true")
-      local_storage_manager.item("showLongTermAlerts", "true")
-      local_storage_manager.item("showRivers", "true")
+      # Miscellaneous
       local_storage_manager.item("showAllOccupiedRegions", "true")
+      local_storage_manager.item("showRivers", "true")
+      local_storage_manager.item("showLongTermAlerts", "true")
+      local_storage_manager.item("showRaionBorders", "true")
+      local_storage_manager.item("showMapIcons", "true")
+
+      local_storage_manager.item("showForeignEvents", "true")
+      local_storage_manager.item("showNeighbourRegions", "true")
+
+      local_storage_manager.item("showHromadas", "true")
       local_storage_manager.item("smartAlertGrouping", "true")
 
       @session.navigation_manager.refresh
