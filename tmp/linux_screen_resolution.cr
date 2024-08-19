@@ -13,4 +13,8 @@ p! resolution
 # Remove the trailing comma and space from the resolution string
 resolution = resolution.chomp(", ")
 
-puts resolution
+width, height = resolution.split('x', 2).map(&.to_i)
+
+result = {width: width, height: height}
+
+puts result
