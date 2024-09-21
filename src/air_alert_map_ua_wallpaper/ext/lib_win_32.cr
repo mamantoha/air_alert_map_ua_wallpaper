@@ -18,7 +18,13 @@
       SM_CYSCREEN = 1
     end
 
-    fun SystemParametersInfoA(uiaction : SYSTEM_PARAMETERS_INFO_ACTION, uiparam : UInt32, pvparam : Void*, fwinini : SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS) : LibC::BOOL
+    fun SystemParametersInfoA(
+      uiaction : SYSTEM_PARAMETERS_INFO_ACTION,
+      uiparam : UInt32,
+      pvparam : Void*,
+      fwinini : SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS
+    ) : LibC::BOOL
+
     fun GetSystemMetrics(nindex : SYSTEM_METRICS_INDEX) : Int32
   end
 {% end %}
