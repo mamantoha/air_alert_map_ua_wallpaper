@@ -1,4 +1,4 @@
-output = `dbus-send --print-reply --type=method_call --dest=org.kde.KWin /KWin org.kde.KWin.supportInformation`
+output = `dbus-send --print-reply --dest=org.kde.KWin /KWin org.kde.KWin.supportInformation`
 
 geometry_regex = /\n+Geometry: \d+,\d+,(\d+)x(\d+)\n/
 scale_regex = /\nScale: (\d+(?:\.\d+)?)\n/
