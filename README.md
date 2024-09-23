@@ -18,7 +18,7 @@ Required libraries:
 
 - To build this script, a requirement is to have a working version of Crystal already installed.
 - A requirement is to have a working `chromedriver` or `geckodriver`.
-- You will also need `qdbus` on KDE Plasma.
+- You will also need `dbus-send` on KDE Plasma.
 
 ```
 $ air_alert_map_ua_wallpaper --help
