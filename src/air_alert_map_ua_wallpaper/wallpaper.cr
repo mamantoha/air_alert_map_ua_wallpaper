@@ -18,15 +18,16 @@ module AirAlertMapUaWallpaper
           var allDesktops = desktops();
           for (i = 0; i < allDesktops.length; i++) {
             d = allDesktops[i];
-            d.wallpaperPlugin = "org.kde.image";
-            d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
-            d.writeConfig("Image", "file://#{@file.path}")
+            d.wallpaperPlugin = 'org.kde.image';
+            d.currentConfigGroup = Array('Wallpaper', 'org.kde.image', 'General');
+            d.writeConfig('Image', 'file://#{@file.path}')
           }
           JS
 
-        command = "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '#{script}'"
+        command = "dbus-send --print-reply --dest=org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript string:\"#{script}\""
 
         output = IO::Memory.new
+
         Process.run(command, shell: true, output: output)
 
         sleep 2.seconds # workaround for multi-monitor
