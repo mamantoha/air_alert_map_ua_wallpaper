@@ -29,7 +29,7 @@ module AirAlertMapUaWallpaper
         output = IO::Memory.new
         Process.run(command, shell: true, output: output)
 
-        sleep 2 # workaround for multi-monitor
+        sleep 2.seconds # workaround for multi-monitor
       end
     {% end %}
 
