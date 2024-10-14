@@ -148,6 +148,8 @@ module AirAlertMapUaWallpaper
       document_manager.execute_script("document.querySelector('#map text.map-attribution').style.display = 'none'")
       document_manager.execute_script("document.querySelector('#map text.map-attribution-time').style.display = 'none'")
 
+      document_manager.execute_script("document.querySelector('.map-subheader').style.display = 'none'")
+
       creadits_query = ".screen.map .credits"
 
       if hide_date
