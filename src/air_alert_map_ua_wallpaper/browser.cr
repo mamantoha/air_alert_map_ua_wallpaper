@@ -119,14 +119,14 @@ module AirAlertMapUaWallpaper
 
       @session.navigation_manager.refresh
 
-      if @type.chrome?
-        wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
-
-        # wait for console.log("loaded map") to be called
-        wait.until do
-          @session.log("browser").any? &.message.ends_with?("\"loaded map\"")
-        end
-      end
+      # if @type.chrome?
+      #   wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
+      #
+      #   # wait for console.log("loaded map") to be called
+      #   wait.until do
+      #     @session.log("browser").any? &.message.ends_with?("\"loaded map\"")
+      #   end
+      # end
 
       wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
       wait.until { @session.find_element(:css, "#map svg") }
