@@ -131,6 +131,9 @@ module AirAlertMapUaWallpaper
       wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
       wait.until { @session.find_element(:css, "#map svg") }
 
+      wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
+      wait.until { document_manager.execute_script("return document.readyState") == "complete" }
+
       map_element = @session.find_element(:css, "#map")
 
       unless light
