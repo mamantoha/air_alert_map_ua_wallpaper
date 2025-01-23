@@ -117,6 +117,9 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showHromadas", "true")
       local_storage_manager.item("smartAlertGrouping", "true")
 
+      local_storage_manager.item("autoWatchMode", "true")
+      local_storage_manager.item("autoWatchModeWarningWasShown", "true")
+
       @session.navigation_manager.refresh
 
       # if @type.chrome?
