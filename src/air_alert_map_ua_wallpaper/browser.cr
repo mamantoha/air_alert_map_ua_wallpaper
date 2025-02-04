@@ -151,8 +151,8 @@ module AirAlertMapUaWallpaper
       end
 
       # Hide "alerts.in.ua" text from the map
-      document_manager.execute_script("document.querySelector('#map text.map-attribution').style.display = 'none'")
-      document_manager.execute_script("document.querySelector('#map text.map-attribution-time').style.display = 'none'")
+      # document_manager.execute_script("document.querySelector('#map text.map-attribution').style.display = 'none'")
+      # document_manager.execute_script("document.querySelector('#map text.map-attribution-time').style.display = 'none'")
 
       document_manager.execute_script("document.querySelector('.map-subheader').style.display = 'none'")
 
