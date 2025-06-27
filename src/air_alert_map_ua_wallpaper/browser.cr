@@ -61,7 +61,7 @@ module AirAlertMapUaWallpaper
       light : Bool = false,
       preset : String = DEFAULT_PRESET,
       map : String = DEFAULT_MAP,
-      hide_date : Bool = false
+      hide_date : Bool = false,
     ) : File
       lite_map = LITE_MAPS.find(if_none: DEFAULT_MAP, &.==(map))
       language = LANGUAGES.find(if_none: DEFAULT_LANGUAGE, &.==(language))
