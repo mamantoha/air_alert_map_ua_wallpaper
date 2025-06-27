@@ -143,10 +143,10 @@ module AirAlertMapUaWallpaper
         # Switch to dark theme
         document_manager.execute_script(
           <<-JS
-          if (document.documentElement.classList.contains('light')) {
-            document.documentElement.classList.remove('light');
-          }
-          JS
+            if (document.documentElement.classList.contains('light')) {
+              document.documentElement.classList.remove('light');
+            }
+            JS
         )
       end
 

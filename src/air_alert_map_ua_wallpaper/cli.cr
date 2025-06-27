@@ -14,17 +14,17 @@ module AirAlertMapUaWallpaper
     private def parse
       option_parser = OptionParser.parse do |parser|
         parser.banner = <<-BANNER
-        NAME
-            #{AirAlertMapUaWallpaper::NAME} - a CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
+          NAME
+              #{AirAlertMapUaWallpaper::NAME} - a CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
-        VERSION
-            #{AirAlertMapUaWallpaper::VERSION}
+          VERSION
+              #{AirAlertMapUaWallpaper::VERSION}
 
-        SYNOPSIS
-            #{AirAlertMapUaWallpaper::NAME} [arguments]
+          SYNOPSIS
+              #{AirAlertMapUaWallpaper::NAME} [arguments]
 
-        ARGUMENTS
-        BANNER
+          ARGUMENTS
+          BANNER
 
         parser.on("-b", "--browser=NAME", "browser: #{AirAlertMapUaWallpaper::Browser::Type.names.map(&.downcase).join('|')} (default: #{config.browser})") do |browser|
           config.browser = browser
