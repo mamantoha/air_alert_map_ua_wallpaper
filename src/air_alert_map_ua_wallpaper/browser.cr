@@ -17,7 +17,7 @@ module AirAlertMapUaWallpaper
           create_chrome_session(driver_path)
         end
 
-      {% if flag?(:linux) %}
+      {% if flag?(:linux) || flag?(:darwin) %}
         if @type.chrome?
           height += 139
         elsif @type.firefox?
