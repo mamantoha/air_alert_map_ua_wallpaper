@@ -17,13 +17,21 @@ module AirAlertMapUaWallpaper
           create_chrome_session(driver_path)
         end
 
-      {% if flag?(:linux) || flag?(:darwin) %}
-        if @type.chrome?
+      if @type.chrome?
+        {% if flag?(:linux) %}
           height += 139
-        elsif @type.firefox?
+        {% elsif flag?(:darwin) %}
+          height += 139
+        {% end %}
+      end
+
+      if @type.firefox?
+        {% if flag?(:linux) %}
           height += 117
-        end
-      {% end %}
+        {% elsif flag?(:darwin) %}
+          height += 85
+        {% end %}
+      end
 
       @session.window_manager.resize_window(width, height)
     end
