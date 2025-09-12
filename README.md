@@ -2,6 +2,8 @@
 
 A CLI tool for setting the Air Raid Alert Map of Ukraine as a desktop background
 
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://vshymanskyy.github.io/StandWithUkraine)
+
 ![preview](preview.png)
 
 ## About
