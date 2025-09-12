@@ -103,6 +103,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showPotentialThreats", "true")
       local_storage_manager.item("showArtillery", "true")
       local_storage_manager.item("showMissilesInFlight", "true")
+      local_storage_manager.item("showOfficialAerialBombs", "true")
       local_storage_manager.item("showCityMissilesInFlight", "true")
 
       # OSINT Sources
@@ -110,6 +111,7 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showUnofficialArtillery", "true")
       local_storage_manager.item("showDemining", "true")
       local_storage_manager.item("showUnofficialDrones", "true")
+      local_storage_manager.item("showUnofficialAerialBombs", "true")
       local_storage_manager.item("showUnofficialCityMissilesInFlight", "true")
 
       # Miscellaneous
