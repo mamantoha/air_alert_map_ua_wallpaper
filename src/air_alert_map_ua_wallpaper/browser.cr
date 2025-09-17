@@ -90,6 +90,12 @@ module AirAlertMapUaWallpaper
 
       local_storage_manager.item("preset", "\"#{preset}\"")
 
+      if light
+        local_storage_manager.item("darkMode", "false")
+      else
+        local_storage_manager.item("darkMode", "true")
+      end
+
       if preset == "contrast"
         local_storage_manager.item("contrastMode", "true")
       end
@@ -148,17 +154,6 @@ module AirAlertMapUaWallpaper
       wait.until { document_manager.execute_script("return document.readyState") == "complete" }
 
       map_element = @session.find_element(:css, "#map")
-
-      unless light
-        # Switch to dark theme
-        document_manager.execute_script(
-          <<-JS
-            if (document.documentElement.classList.contains('light')) {
-              document.documentElement.classList.remove('light');
-            }
-            JS
-        )
-      end
 
       # Hide "alerts.in.ua" text from the map
       # document_manager.execute_script("document.querySelector('#map text.map-attribution').style.display = 'none'")
