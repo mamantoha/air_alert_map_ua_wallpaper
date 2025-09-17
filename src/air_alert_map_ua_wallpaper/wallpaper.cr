@@ -77,7 +77,7 @@ module AirAlertMapUaWallpaper
             configuration_bytes = value.as(Bytes)
 
             unless configuration_bytes.empty?
-              configuration_hash = Bplist.parse(configuration_bytes).to_hash
+              configuration_hash = Bplist.parse(configuration_bytes).to_h
 
               if configuration_hash["url"]?.is_a?(Hash)
                 configuration_url_hash = configuration_hash["url"].as(Hash)
