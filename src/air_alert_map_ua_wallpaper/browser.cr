@@ -158,7 +158,7 @@ module AirAlertMapUaWallpaper
 
       document_manager.execute_script("document.querySelector('.map-subheader').style.display = 'none'")
 
-      creadits_query = ".screen.map .credits"
+      creadits_query = ".screen.map .credits a"
 
       if hide_date
         credits_element = @session.find_element(:css, creadits_query)
