@@ -40,7 +40,6 @@ ARGUMENTS
     -l, --language=NAME              language uk|en|de|pl|ja|crh (default: uk)
     --light                          set light wallpaper
     -p, --preset=NAME                preset default|contrast|vadym|st|black (default: default)
-    -m, --map=NAME                   map dynamic|super|vbasic|hex (default: dynamic)
     --hide-date                      hide date
     --help                           print this help
     -v, --version                    display the version and exit
