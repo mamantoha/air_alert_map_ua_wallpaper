@@ -9,7 +9,6 @@ module AirAlertMapUaWallpaper
     property language = DEFAULT_LANGUAGE
     property? light = false
     property preset = DEFAULT_PRESET
-    property map = DEFAULT_MAP
     property? hide_date = false
   end
 end

@@ -9,16 +9,9 @@ module AirAlertMapUaWallpaper
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
   NAME    = "air_alert_map_ua_wallpaper"
 
-  # dynamic | Швидка | Detailed
-  # super   | Спрощена | Simplifies
-  # vbasic  | Схематична
-  # hex     | Гексагональна мапа
-  # ascii   | ASCII мапа (don't use)
-  LITE_MAPS = ["dynamic", "super", "vbasic", "hex"]
   PRESETS   = ["default", "contrast", "vadym", "st", "black"]
   LANGUAGES = ["uk", "en", "de", "pl", "ja", "crh"]
 
-  DEFAULT_MAP      = "dynamic"
   DEFAULT_PRESET   = "default"
   DEFAULT_LANGUAGE = "uk"
 
@@ -60,7 +53,6 @@ module AirAlertMapUaWallpaper
         language: config.language,
         light: config.light?,
         preset: config.preset,
-        map: config.map,
         hide_date: config.hide_date?
       )
 

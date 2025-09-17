@@ -52,10 +52,6 @@ module AirAlertMapUaWallpaper
           config.preset = name
         end
 
-        parser.on("-m", "--map=NAME", "map #{AirAlertMapUaWallpaper::LITE_MAPS.join('|')} (default: #{config.map})") do |name|
-          config.map = name
-        end
-
         parser.on("--hide-date", "hide date") do
           config.hide_date = true
         end

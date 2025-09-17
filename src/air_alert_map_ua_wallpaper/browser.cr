@@ -68,10 +68,8 @@ module AirAlertMapUaWallpaper
       language : String = DEFAULT_LANGUAGE,
       light : Bool = false,
       preset : String = DEFAULT_PRESET,
-      map : String = DEFAULT_MAP,
       hide_date : Bool = false,
     ) : File
-      lite_map = LITE_MAPS.find(if_none: DEFAULT_MAP, &.==(map))
       language = LANGUAGES.find(if_none: DEFAULT_LANGUAGE, &.==(language))
       preset = PRESETS.find(if_none: DEFAULT_PRESET, &.==(preset))
 
@@ -86,7 +84,6 @@ module AirAlertMapUaWallpaper
       document_manager = @session.document_manager
 
       local_storage_manager = @session.local_storage_manager
-      local_storage_manager.item("liteMap", "\"#{lite_map}\"")
 
       local_storage_manager.item("preset", "\"#{preset}\"")
 
