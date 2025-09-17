@@ -72,6 +72,25 @@ module AirAlertMapUaWallpaper
 
           Bplist::Any.new(converted_hash)
         when Bplist::Any::ValueType
+          # macOS 26
+          if path.last(3) == ["Choices", "[0]", "Configuration"]
+            configuration_bytes = value.as(Bytes)
+
+            unless configuration_bytes.empty?
+              configuration_hash = Bplist.parse(configuration_bytes).to_hash
+
+              if configuration_hash["url"]?.is_a?(Hash)
+                configuration_url_hash = configuration_hash["url"].as(Hash)
+                configuration_url_hash["relative"] = "file://#{@file.path.to_s}"
+              end
+
+              configuration_bplist = Bplist::Writer.new(configuration_hash)
+
+              value = configuration_bplist.io.to_slice
+            end
+          end
+
+          # macOS 15
           if path.last(3) == ["Files", "[0]", "relative"]
             value = "file://#{@file.path.to_s}"
           end
