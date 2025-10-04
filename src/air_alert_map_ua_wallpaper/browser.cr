@@ -98,7 +98,6 @@ module AirAlertMapUaWallpaper
       end
 
       local_storage_manager.item("showOfficialMapAlerts", "true")
-      local_storage_manager.item("showLocalAlerts", "true")
       local_storage_manager.item("showAlertDurations", "true")
 
       # Official Sources
@@ -127,11 +126,11 @@ module AirAlertMapUaWallpaper
       local_storage_manager.item("showForeignEvents", "true")
       local_storage_manager.item("showNeighbourRegions", "true")
 
-      local_storage_manager.item("showHromadas", "true")
-      local_storage_manager.item("smartAlertGrouping", "true")
+      local_storage_manager.item("showHromadasTitles", "true")
+      local_storage_manager.item("showOblastLabels", "true")
+      local_storage_manager.item("showRaion", "\"active_only\"")
 
-      local_storage_manager.item("autoWatchMode", "true")
-      local_storage_manager.item("autoWatchModeWarningWasShown", "true")
+      local_storage_manager.item("lowPerformer", "false")
 
       @session.navigation_manager.refresh
 
