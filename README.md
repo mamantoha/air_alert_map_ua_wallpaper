@@ -39,7 +39,7 @@ ARGUMENTS
     -h, --height=PIXELS              specify a desired height in pixels (default: 1440)
     -l, --language=NAME              language uk|en|de|pl|ja|crh (default: uk)
     --light                          set light wallpaper
-    -p, --preset=NAME                preset default|contrast|vadym|st|black|night-red (default: default)
+    -p, --preset=NAME                preset default|contrast|vadym|st|black|night-red|bw (default: default)
     --hide-date                      hide date
     --help                           print this help
     -v, --version                    display the version and exit
