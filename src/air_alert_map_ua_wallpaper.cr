@@ -9,7 +9,7 @@ module AirAlertMapUaWallpaper
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
   NAME    = "air_alert_map_ua_wallpaper"
 
-  PRESETS   = ["default", "contrast", "vadym", "st", "black"]
+  PRESETS   = ["default", "contrast", "vadym", "st", "black", "night-red"]
   LANGUAGES = ["uk", "en", "de", "pl", "ja", "crh"]
 
   DEFAULT_PRESET   = "default"
