@@ -129,7 +129,7 @@ module AirAlertMapUaWallpaper
 
       local_storage_manager.item("showHromadasTitles", "true")
       local_storage_manager.item("showOblastLabels", "true")
-      local_storage_manager.item("showRaion", "\"active_only\"")
+      local_storage_manager.item("showRaion", "null")
 
       local_storage_manager.item("lowPerformer", "false")
 
