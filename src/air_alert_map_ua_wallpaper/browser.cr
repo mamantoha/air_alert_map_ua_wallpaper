@@ -172,7 +172,7 @@ module AirAlertMapUaWallpaper
 
       sleep 1.second
 
-      tempfile = File.tempfile("alers_wallpaper", ".png")
+      tempfile = File.tempfile("alerts_wallpaper", ".png")
 
       map_element.screenshot(tempfile.path)
 
