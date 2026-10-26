@@ -13,8 +13,6 @@ result =
     height = geometry_match[2].to_i * scale_match[1].to_f
 
     {width: width.to_i, height: height.to_i}
-  else
-    nil
   end
 
 p! result
