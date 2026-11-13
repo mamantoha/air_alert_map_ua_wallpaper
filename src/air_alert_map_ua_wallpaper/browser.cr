@@ -97,8 +97,8 @@ module AirAlertMapUaWallpaper
         local_storage_manager.item("contrastMode", "true")
       end
 
-      # local_storage_manager.item("autoWatchMode", "true")
-      local_storage_manager.item("autoWatchModeWarningWasShown", "true")
+      local_storage_manager.item("autoWatchMode", "true")
+      local_storage_manager.item("tracksOsintDisclaimerAccepted", "true")
 
       local_storage_manager.item("showDurationGradient", "15")
       local_storage_manager.item("showOfficialMapAlerts", "true")
