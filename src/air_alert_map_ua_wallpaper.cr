@@ -10,7 +10,7 @@ module AirAlertMapUaWallpaper
   NAME    = "air_alert_map_ua_wallpaper"
 
   PRESETS   = ["default", "contrast", "vadym", "st", "black", "night-red", "bw"]
-  LANGUAGES = ["uk", "en", "de", "pl", "ja", "crh"]
+  LANGUAGES = ["uk", "en", "de", "pl", "ja", "crh", "lt", "lv", "et", "ro"]
 
   DEFAULT_PRESET   = "default"
   DEFAULT_LANGUAGE = "uk"
