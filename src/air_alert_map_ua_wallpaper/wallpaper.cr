@@ -62,6 +62,19 @@ module AirAlertMapUaWallpaper
 
           Bplist::Any.new(converted_array)
         when Hash
+          if path.last(4) == ["Desktop", "Content", "Choices", "[0]"] && value["Provider"]?.try(&.as_s?) == "default"
+            image_url = {"relative" => "file://#{@file.path}"}
+            configuration = Bplist::Writer.new({"type" => "imageFile", "url" => image_url})
+
+            # The default provider has no image references to replace.
+            converted_hash = value.dup
+            converted_hash["Provider"] = Bplist::Any.new("com.apple.wallpaper.choice.image")
+            converted_hash["Configuration"] = Bplist::Any.new(configuration.io.to_slice)
+            converted_hash["Files"] = Bplist::Any.convert([] of String)
+
+            return Bplist::Any.new(converted_hash)
+          end
+
           # Convert each key-value pair of the hash
           converted_hash = Hash(String, Bplist::Any).new
           value.each do |key, val|
@@ -80,6 +93,7 @@ module AirAlertMapUaWallpaper
               configuration_hash = Bplist.parse(configuration_bytes).to_h
 
               if configuration_hash["url"]?.is_a?(Hash)
+                configuration_hash["type"] = "imageFile" unless configuration_hash.has_key?("type")
                 configuration_url_hash = configuration_hash["url"].as(Hash)
                 configuration_url_hash["relative"] = "file://#{@file.path.to_s}"
               end
