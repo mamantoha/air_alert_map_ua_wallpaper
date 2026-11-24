@@ -118,6 +118,14 @@ To check the status of a launch agent:
 launchctl list | grep com.example.air_alert_map_ua_wallpaper
 ```
 
+macOS WallpaperAgent caches wallpaper images in:
+
+```text
+~/Library/Containers/com.apple.wallpaper.agent/Data/Library/Caches/com.apple.wallpaper.caches/extension-com.apple.wallpaper.extension.image
+```
+
+With frequent wallpaper updates, this cache can grow to several gigabytes. Check its disk usage periodically and clear it manually if needed. This tool does not automatically clean WallpaperAgent's cache.
+
 ## Contributing
 
 1. Fork it (<https://github.com/mamantoha/air_alert_map_ua_wallpaper/fork>)
