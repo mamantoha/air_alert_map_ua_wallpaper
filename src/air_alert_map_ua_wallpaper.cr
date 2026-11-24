@@ -26,8 +26,8 @@ module AirAlertMapUaWallpaper
 
     width = height = nil
 
-    if resolution = ScreenResolution.get_screen_resolution
-      if config.default_resolution?
+    if config.default_resolution?
+      if resolution = ScreenResolution.get_screen_resolution
         width = resolution[:width]
         height = resolution[:height]
       end
