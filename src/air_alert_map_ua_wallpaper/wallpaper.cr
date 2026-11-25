@@ -43,7 +43,18 @@ module AirAlertMapUaWallpaper
         modified_result = rebuild_and_modify_bplist_any(result)
 
         writer = Bplist::Writer.new(modified_result.as_h)
-        writer.write_to_file(path)
+        tempfile = File.tempfile("Index", ".plist", dir: File.dirname(path))
+
+        begin
+          tempfile.chmod(File.info(path).permissions)
+          tempfile.write(writer.io.to_slice)
+          tempfile.fsync
+          tempfile.close
+          File.rename(tempfile.path, path)
+        ensure
+          tempfile.close
+          File.delete?(tempfile.path)
+        end
 
         Process.run("killall WallpaperAgent", shell: true)
       end
